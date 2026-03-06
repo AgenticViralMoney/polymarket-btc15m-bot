@@ -122,8 +122,11 @@ def main() -> None:
                 secs_left = decision.seconds_to_resolution
                 secs_text = 'n/a' if secs_left is None else f"{secs_left:.1f}"
                 source = market.get('_live_price_source')
+                ws_status = market.get('_ws_status') or {}
+                sync_gap = ws_status.get('sync_gap_seconds')
+                sync_text = 'n/a' if sync_gap is None else f"{sync_gap:.3f}"
                 console.print(
-                    f"[{slug}] {decision.reason} | up={up_price} | down={down_price} | best={best_price} | source={source} | secs_left={secs_text}"
+                    f"[{slug}] {decision.reason} | up={up_price} | down={down_price} | best={best_price} | source={source} | sync_gap={sync_text} | secs_left={secs_text}"
                 )
 
                 if touch_logger and best_price is not None and secs_left is not None and secs_left <= settings.seconds_before_resolution and secs_left > 0:
@@ -176,7 +179,7 @@ def main() -> None:
                 console.print(
                     f"Summary | total={summary['total_trades']} settled={summary['settled_trades']} wins={summary['wins']} losses={summary['losses']} net_pnl={summary['net_pnl_usdc']}"
                 )
-                console.print(f"Report: {report_path}")
+                console.print(f'Report: {report_path}')
 
             if settings.run_once:
                 console.print('Run-once mode complete')

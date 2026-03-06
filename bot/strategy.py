@@ -46,12 +46,45 @@ class Strategy:
         if self.skip_seconds_delayed_markets and market.get('secondsDelay') is not None:
             return StrategyDecision(False, f"market has execution delay: {market.get('secondsDelay')}s", seconds_to_resolution=seconds_left)
 
+        source = market.get('_live_price_source')
+        if source != 'polymarket_ws':
+            ws_status = market.get('_ws_status') or {}
+            return StrategyDecision(
+                False,
+                f"live websocket not ready ({source})",
+                seconds_to_resolution=seconds_left,
+                details={'price_source': source, 'ws_status': ws_status},
+            )
+
         outcomes = market.get('_parsed_outcomes') or []
         token_ids = market.get('_parsed_token_ids') or []
         if len(outcomes) != 2 or len(token_ids) != 2:
             return StrategyDecision(False, 'unexpected market structure', seconds_to_resolution=seconds_left)
 
-        best = max(outcomes, key=lambda x: x['price'])
+        valid_outcomes = [
+            outcome for outcome in outcomes
+            if outcome.get('price') is not None and 0.0 <= float(outcome['price']) <= 1.0
+        ]
+        if len(valid_outcomes) != 2:
+            return StrategyDecision(
+                False,
+                'incomplete live prices',
+                seconds_to_resolution=seconds_left,
+                details={'price_source': source, 'outcomes': outcomes},
+            )
+
+        up_price = float(valid_outcomes[0]['price'])
+        down_price = float(valid_outcomes[1]['price'])
+        price_sum = up_price + down_price
+        if price_sum > 1.15:
+            return StrategyDecision(
+                False,
+                f'inconsistent two-sided prices: up+down={price_sum:.3f}',
+                seconds_to_resolution=seconds_left,
+                details={'up_price': up_price, 'down_price': down_price, 'price_source': source},
+            )
+
+        best = max(valid_outcomes, key=lambda x: x['price'])
         best_idx = int(best['index'])
 
         if best['price'] < self.min_confidence_price:
@@ -62,7 +95,7 @@ class Strategy:
                 details={
                     'best_label': best['label'],
                     'best_price': best['price'],
-                    'price_source': market.get('_live_price_source'),
+                    'price_source': source,
                 },
             )
 
@@ -77,6 +110,6 @@ class Strategy:
             details={
                 'best_label': best['label'],
                 'best_price': best['price'],
-                'price_source': market.get('_live_price_source'),
+                'price_source': source,
             },
         )

@@ -25,9 +25,15 @@ class OutcomeQuote:
 
 
 class PolymarketMarketFeed:
-    def __init__(self, ws_url: str = 'wss://ws-subscriptions-clob.polymarket.com/ws/market', stale_after_seconds: float = 5.0):
+    def __init__(
+        self,
+        ws_url: str = 'wss://ws-subscriptions-clob.polymarket.com/ws/market',
+        stale_after_seconds: float = 5.0,
+        sync_tolerance_seconds: float = 1.5,
+    ):
         self.ws_url = ws_url
         self.stale_after_seconds = stale_after_seconds
+        self.sync_tolerance_seconds = sync_tolerance_seconds
         self._lock = threading.Lock()
         self._quotes: dict[str, OutcomeQuote] = {}
         self._asset_ids: list[str] = []
@@ -76,14 +82,17 @@ class PolymarketMarketFeed:
     def is_ready(self) -> bool:
         now = time.time()
         with self._lock:
-            quotes = list(self._quotes.values())
-        if not quotes:
+            quotes = [self._quotes.get(asset_id) for asset_id in self._asset_ids]
+        if not quotes or any(q is None for q in quotes):
             return False
         for q in quotes:
             if q.buy_price is None or q.last_update_ts is None:
                 return False
             if now - q.last_update_ts > self.stale_after_seconds:
                 return False
+        timestamps = [q.last_update_ts for q in quotes if q and q.last_update_ts is not None]
+        if len(timestamps) >= 2 and max(timestamps) - min(timestamps) > self.sync_tolerance_seconds:
+            return False
         return True
 
     def status(self) -> dict[str, Any]:
@@ -98,31 +107,32 @@ class PolymarketMarketFeed:
                 }
                 for asset_id, q in self._quotes.items()
             }
+            timestamps = [q.last_update_ts for q in self._quotes.values() if q.last_update_ts is not None]
+        sync_gap = (max(timestamps) - min(timestamps)) if len(timestamps) >= 2 else 0.0
         return {
             'connected': self._connected,
             'ready': self.is_ready(),
             'asset_ids': list(self._asset_ids),
             'last_error': self._last_error,
+            'sync_gap_seconds': sync_gap,
             'quotes': quotes,
         }
 
-    def get_buy_price(self, asset_id: str) -> float | None:
-        with self._lock:
-            q = self._quotes.get(str(asset_id))
-            return q.buy_price if q else None
-
     def apply_prices_to_market(self, market: dict[str, Any]) -> dict[str, Any]:
         market = dict(market)
+        status = self.status()
+        market['_ws_status'] = status
+        if not status.get('ready'):
+            market['_live_price_source'] = 'polymarket_ws_not_ready'
+            return market
+
         parsed = []
         used_live = False
+        token_ids = market.get('_parsed_token_ids') or []
         for outcome in market.get('_parsed_outcomes') or []:
             updated = dict(outcome)
-            token_id = None
             idx = int(updated.get('index', 0))
-            token_ids = market.get('_parsed_token_ids') or []
-            if idx < len(token_ids):
-                token_id = str(token_ids[idx])
-
+            token_id = str(token_ids[idx]) if idx < len(token_ids) else None
             if token_id:
                 with self._lock:
                     q = self._quotes.get(token_id)
@@ -130,6 +140,7 @@ class PolymarketMarketFeed:
                     updated['best_bid'] = q.best_bid
                     updated['best_ask'] = q.best_ask
                     updated['last_trade_price'] = q.last_trade_price
+                    updated['quote_age_seconds'] = (time.time() - q.last_update_ts) if q.last_update_ts else None
                     if q.buy_price is not None:
                         updated['price'] = q.buy_price
                         used_live = True
@@ -183,12 +194,10 @@ class PolymarketMarketFeed:
             payload = json.loads(message)
         except Exception:
             return
-
         if isinstance(payload, list):
             for item in payload:
                 self._handle_event(item)
             return
-
         if isinstance(payload, dict):
             self._handle_event(payload)
 
@@ -199,8 +208,8 @@ class PolymarketMarketFeed:
 
         if event_type == 'book':
             asset_id = str(event.get('asset_id'))
-            best_bid = self._extract_best_price(event.get('bids'))
-            best_ask = self._extract_best_price(event.get('asks'))
+            best_bid = self._extract_best_price(event.get('bids'), reverse=True)
+            best_ask = self._extract_best_price(event.get('asks'), reverse=False)
             timestamp = self._parse_ts(event.get('timestamp'))
             self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=timestamp)
             return
@@ -252,13 +261,23 @@ class PolymarketMarketFeed:
                 quote.last_update_ts = last_update_ts
 
     @staticmethod
-    def _extract_best_price(levels: Any) -> float | None:
+    def _extract_best_price(levels: Any, reverse: bool) -> float | None:
         if not levels:
             return None
-        first = levels[0]
-        if isinstance(first, dict):
-            return PolymarketMarketFeed._safe_float(first.get('price'))
-        return None
+        best = None
+        for level in levels:
+            if not isinstance(level, dict):
+                continue
+            value = PolymarketMarketFeed._safe_float(level.get('price'))
+            if value is None:
+                continue
+            if best is None:
+                best = value
+            elif reverse and value > best:
+                best = value
+            elif not reverse and value < best:
+                best = value
+        return best
 
     @staticmethod
     def _safe_float(value: Any) -> float | None:

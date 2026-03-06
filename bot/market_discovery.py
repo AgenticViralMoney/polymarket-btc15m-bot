@@ -15,6 +15,7 @@ class GammaMarketDiscovery:
         self.gamma_url = gamma_url.rstrip('/')
         self.clob_host = clob_host.rstrip('/')
         self.market_feed = PolymarketMarketFeed()
+        self._subscribed_slug: str | None = None
 
     def get_market_by_slug(self, slug: str) -> dict[str, Any] | None:
         r = requests.get(f"{self.gamma_url}/markets", params={'slug': slug}, timeout=20)
@@ -24,7 +25,9 @@ class GammaMarketDiscovery:
             market = self._normalize_market(arr[0])
             token_ids = market.get('_parsed_token_ids') or []
             if token_ids:
-                self.market_feed.subscribe(token_ids)
+                if slug != self._subscribed_slug:
+                    self.market_feed.subscribe(token_ids)
+                    self._subscribed_slug = slug
                 self.market_feed.wait_until_ready(timeout_seconds=3)
                 market = self.market_feed.apply_prices_to_market(market)
             return market
