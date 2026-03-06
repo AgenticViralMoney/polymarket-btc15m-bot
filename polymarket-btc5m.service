@@ -1,0 +1,15 @@
+[Unit]
+Description=Polymarket BTC 5m Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/polymarket_5m_bot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/polymarket_5m_bot/.venv/bin/python %h/polymarket_5m_bot/main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
