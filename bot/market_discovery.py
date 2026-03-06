@@ -73,42 +73,31 @@ class GammaMarketDiscovery:
 
         refreshed = []
         used_live_data = False
+
         for outcome, token_id in zip(outcomes, token_ids):
             updated = dict(outcome)
-            try:
-                book = self.get_order_book(token_id)
-            except Exception:
-                book = None
-
-            if book:
-                asks = book.get('asks') or []
-                bids = book.get('bids') or []
-                best_ask = self._safe_float(asks[0].get('price')) if asks else None
-                best_bid = self._safe_float(bids[0].get('price')) if bids else None
-                best_ask_size = self._safe_float(asks[0].get('size')) if asks else None
-                last_trade_price = self._safe_float(book.get('last_trade_price'))
-
-                updated['best_ask'] = best_ask
-                updated['best_bid'] = best_bid
-                updated['best_ask_size'] = best_ask_size
-                updated['last_trade_price'] = last_trade_price
-
-                live_price = best_ask if best_ask is not None else last_trade_price
-                if live_price is not None:
-                    updated['price'] = live_price
-                    used_live_data = True
-
+            live_buy_price = self.get_buy_price(token_id)
+            if live_buy_price is not None:
+                updated['price'] = live_buy_price
+                updated['best_ask'] = live_buy_price
+                used_live_data = True
             refreshed.append(updated)
 
         market['_parsed_outcomes'] = refreshed
-        market['_live_price_source'] = 'clob_book' if used_live_data else 'gamma_outcome_prices'
+        market['_live_price_source'] = 'clob_price_buy' if used_live_data else 'gamma_outcome_prices'
         return market
 
-    def get_order_book(self, token_id: str) -> dict[str, Any] | None:
-        r = requests.get(f"{self.clob_host}/book", params={'token_id': token_id}, timeout=20)
+    def get_buy_price(self, token_id: str) -> float | None:
+        r = requests.get(
+            f"{self.clob_host}/price",
+            params={'token_id': token_id, 'side': 'BUY'},
+            timeout=20,
+        )
         r.raise_for_status()
         data = r.json()
-        return data if isinstance(data, dict) else None
+        if isinstance(data, dict):
+            return self._safe_float(data.get('price'))
+        return None
 
     @staticmethod
     def _safe_float(value: Any) -> float | None:
