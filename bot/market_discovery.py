@@ -2,16 +2,19 @@ from __future__ import annotations
 
 import json
 import time
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Any
 
 import requests
+
+from bot.polymarket_ws import PolymarketMarketFeed
 
 
 class GammaMarketDiscovery:
     def __init__(self, gamma_url: str, clob_host: str = 'https://clob.polymarket.com'):
         self.gamma_url = gamma_url.rstrip('/')
         self.clob_host = clob_host.rstrip('/')
+        self.market_feed = PolymarketMarketFeed()
 
     def get_market_by_slug(self, slug: str) -> dict[str, Any] | None:
         r = requests.get(f"{self.gamma_url}/markets", params={'slug': slug}, timeout=20)
@@ -19,7 +22,12 @@ class GammaMarketDiscovery:
         arr = r.json()
         if isinstance(arr, list) and arr:
             market = self._normalize_market(arr[0])
-            return self.refresh_live_prices(market)
+            token_ids = market.get('_parsed_token_ids') or []
+            if token_ids:
+                self.market_feed.subscribe(token_ids)
+                self.market_feed.wait_until_ready(timeout_seconds=3)
+                market = self.market_feed.apply_prices_to_market(market)
+            return market
         return None
 
     def find_current_btc_5m_markets(self, horizon_steps: int = 8) -> list[dict[str, Any]]:
@@ -64,50 +72,6 @@ class GammaMarketDiscovery:
         out.sort(key=lambda m: self._end_ts(m))
         return out
 
-    def refresh_live_prices(self, market: dict[str, Any]) -> dict[str, Any]:
-        token_ids = market.get('_parsed_token_ids') or []
-        outcomes = market.get('_parsed_outcomes') or []
-        if len(token_ids) != 2 or len(outcomes) != 2:
-            market['_live_price_source'] = 'gamma_outcome_prices'
-            return market
-
-        refreshed = []
-        used_live_data = False
-
-        for outcome, token_id in zip(outcomes, token_ids):
-            updated = dict(outcome)
-            live_buy_price = self.get_buy_price(token_id)
-            if live_buy_price is not None:
-                updated['price'] = live_buy_price
-                updated['best_ask'] = live_buy_price
-                used_live_data = True
-            refreshed.append(updated)
-
-        market['_parsed_outcomes'] = refreshed
-        market['_live_price_source'] = 'clob_price_buy' if used_live_data else 'gamma_outcome_prices'
-        return market
-
-    def get_buy_price(self, token_id: str) -> float | None:
-        r = requests.get(
-            f"{self.clob_host}/price",
-            params={'token_id': token_id, 'side': 'BUY'},
-            timeout=20,
-        )
-        r.raise_for_status()
-        data = r.json()
-        if isinstance(data, dict):
-            return self._safe_float(data.get('price'))
-        return None
-
-    @staticmethod
-    def _safe_float(value: Any) -> float | None:
-        if value is None or value == '':
-            return None
-        try:
-            return float(value)
-        except Exception:
-            return None
-
     @staticmethod
     def _end_ts(m: dict[str, Any]) -> float:
         try:
@@ -128,7 +92,7 @@ class GammaMarketDiscovery:
         parsed_outcomes = []
         try:
             for i, label in enumerate(outcomes):
-                price = float(prices[i])
+                price = float(prices[i]) if i < len(prices) else 0.5
                 parsed_outcomes.append({'index': i, 'label': str(label), 'price': price})
         except Exception:
             parsed_outcomes = []
