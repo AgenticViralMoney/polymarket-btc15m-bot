@@ -7,6 +7,7 @@ from rich.console import Console
 
 from config import settings
 from bot.execution import LiveExecutor, PaperExecutor
+from bot.live_btc_feed import LiveBTCFeed
 from bot.market_discovery import GammaMarketDiscovery
 from bot.state import Journal
 from bot.strategy import Strategy
@@ -62,7 +63,19 @@ def _pick_current_market(markets: list[dict]) -> dict | None:
 
 def main() -> None:
     journal = Journal(settings.journal_path)
-    discovery = GammaMarketDiscovery(settings.polymarket_gamma_url)
+    discovery = GammaMarketDiscovery(settings.polymarket_gamma_url, settings.polymarket_host)
+    btc_feed = LiveBTCFeed(
+        volatility_lookback_seconds=settings.binance_volatility_lookback_seconds,
+        stale_after_seconds=settings.binance_stale_after_seconds,
+    )
+    btc_feed.start()
+    if btc_feed.wait_until_ready(timeout_seconds=20):
+        status = btc_feed.get_status()
+        console.print(f"Live BTC stream ready | source={status.get('active_source')} | price={status.get('latest_price')}")
+    else:
+        status = btc_feed.get_status()
+        console.print(f"[yellow]Live BTC stream not ready yet[/yellow] | source={status.get('active_source')} | last_error={status.get('last_error')}")
+
     strategy = Strategy(
         settings.min_confidence_price,
         settings.seconds_before_resolution,
@@ -112,8 +125,16 @@ def main() -> None:
                 if not market:
                     break
 
+                signal = btc_feed.build_market_signal(market)
+                if signal.get('ready'):
+                    market = btc_feed.apply_signal_to_market(market, signal)
+                else:
+                    market['_signal_context'] = signal
+                    market['_live_price_source'] = signal.get('price_source')
+
                 market['_decision_ts'] = datetime.now(timezone.utc).isoformat()
                 decision = strategy.evaluate(market)
+                signal_ctx = market.get('_signal_context') or {}
                 parsed = market.get('_parsed_outcomes') or []
                 up_price = parsed[0]['price'] if len(parsed) > 0 else None
                 down_price = parsed[1]['price'] if len(parsed) > 1 else None
@@ -121,7 +142,14 @@ def main() -> None:
 
                 secs_left = decision.seconds_to_resolution
                 secs_text = 'n/a' if secs_left is None else f"{secs_left:.1f}"
-                console.print(f"[{slug}] {decision.reason} | best={best_price} | secs_left={secs_text}")
+                btc_now = signal_ctx.get('current_btc_price')
+                btc_open = signal_ctx.get('market_open_price')
+                if btc_now is not None and btc_open is not None:
+                    console.print(
+                        f"[{slug}] {decision.reason} | best={best_price} | btc={btc_now:.2f} vs open={btc_open:.2f} | secs_left={secs_text}"
+                    )
+                else:
+                    console.print(f"[{slug}] {decision.reason} | best={best_price} | secs_left={secs_text}")
 
                 if touch_logger and best_price is not None and secs_left is not None and secs_left <= settings.seconds_before_resolution and secs_left > 0:
                     touch_logger.append(
@@ -173,7 +201,7 @@ def main() -> None:
                 console.print(
                     f"Summary | total={summary['total_trades']} settled={summary['settled_trades']} wins={summary['wins']} losses={summary['losses']} net_pnl={summary['net_pnl_usdc']}"
                 )
-                console.print(f'Report: {report_path}')
+                console.print(f"Report: {report_path}")
 
             if settings.run_once:
                 console.print('Run-once mode complete')
@@ -186,6 +214,8 @@ def main() -> None:
             journal.add_note('loop_error', {'error': repr(exc)})
             console.print(f'[red]Loop error:[/red] {exc}')
             time.sleep(max(settings.poll_interval_seconds, 5))
+
+    btc_feed.stop()
 
 
 if __name__ == '__main__':

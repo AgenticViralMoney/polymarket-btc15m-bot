@@ -27,6 +27,7 @@ class Strategy:
         now = datetime.now(timezone.utc)
         end_dt = datetime.fromisoformat(market['endDate'].replace('Z', '+00:00'))
         seconds_left = (end_dt - now).total_seconds()
+        signal = market.get('_signal_context') or {}
 
         if seconds_left <= 0:
             return StrategyDecision(False, 'market already expired', seconds_to_resolution=seconds_left)
@@ -46,6 +47,14 @@ class Strategy:
         if self.skip_seconds_delayed_markets and market.get('secondsDelay') is not None:
             return StrategyDecision(False, f"market has execution delay: {market.get('secondsDelay')}s", seconds_to_resolution=seconds_left)
 
+        if not signal.get('ready'):
+            return StrategyDecision(
+                False,
+                str(signal.get('reason') or 'waiting for live BTC signal'),
+                seconds_to_resolution=seconds_left,
+                details=signal or None,
+            )
+
         outcomes = market.get('_parsed_outcomes') or []
         token_ids = market.get('_parsed_token_ids') or []
         if len(outcomes) != 2 or len(token_ids) != 2:
@@ -53,12 +62,19 @@ class Strategy:
 
         best = max(outcomes, key=lambda x: x['price'])
         best_idx = int(best['index'])
+
         if best['price'] < self.min_confidence_price:
             return StrategyDecision(
                 False,
                 f"best side below threshold: {best['label']} @ {best['price']:.3f}",
                 seconds_to_resolution=seconds_left,
-                details={'best_label': best['label'], 'best_price': best['price']},
+                details={
+                    'best_label': best['label'],
+                    'best_price': best['price'],
+                    'current_btc_price': signal.get('current_btc_price'),
+                    'market_open_price': signal.get('market_open_price'),
+                    'price_source': signal.get('price_source'),
+                },
             )
 
         return StrategyDecision(
@@ -69,5 +85,13 @@ class Strategy:
             chosen_price=best['price'],
             chosen_outcome_index=best_idx,
             seconds_to_resolution=seconds_left,
-            details={'best_label': best['label'], 'best_price': best['price']},
+            details={
+                'best_label': best['label'],
+                'best_price': best['price'],
+                'current_btc_price': signal.get('current_btc_price'),
+                'market_open_price': signal.get('market_open_price'),
+                'price_source': signal.get('price_source'),
+                'z_score': signal.get('z_score'),
+                'move_usd': signal.get('move_usd'),
+            },
         )

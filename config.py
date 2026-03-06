@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     poll_interval_seconds: float = Field(default=2.0, alias='POLL_INTERVAL_SECONDS')
     only_one_trade_per_market: bool = Field(default=True, alias='ONLY_ONE_TRADE_PER_MARKET')
     skip_seconds_delayed_markets: bool = Field(default=True, alias='SKIP_SECONDS_DELAYED_MARKETS')
+    binance_stale_after_seconds: float = Field(default=5.0, alias='BINANCE_STALE_AFTER_SECONDS')
+    binance_volatility_lookback_seconds: int = Field(default=120, alias='BINANCE_VOLATILITY_LOOKBACK_SECONDS')
 
     auto_settle_paper: bool = Field(default=True, alias='AUTO_SETTLE_PAPER')
     auto_settle_live: bool = Field(default=True, alias='AUTO_SETTLE_LIVE')
