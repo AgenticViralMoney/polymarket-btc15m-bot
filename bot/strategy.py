@@ -47,8 +47,18 @@ class Strategy:
             return StrategyDecision(False, f"market has execution delay: {market.get('secondsDelay')}s", seconds_to_resolution=seconds_left)
 
         source = market.get('_live_price_source')
+        ws_status = market.get('_ws_status') or {}
+        sync_gap = ws_status.get('sync_gap_seconds')
+
+        if sync_gap is not None and float(sync_gap) > 1.5:
+            return StrategyDecision(
+                False,
+                f'websocket quotes out of sync: gap={float(sync_gap):.3f}s',
+                seconds_to_resolution=seconds_left,
+                details={'price_source': source, 'ws_status': ws_status},
+            )
+
         if source != 'polymarket_ws':
-            ws_status = market.get('_ws_status') or {}
             return StrategyDecision(
                 False,
                 f"live websocket not ready ({source})",
