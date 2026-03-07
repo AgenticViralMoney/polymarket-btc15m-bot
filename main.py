@@ -107,10 +107,10 @@ def main() -> None:
                 if settings.run_once:
                     console.print('Run-once mode complete')
                     break
-                time.sleep(max(sleep_for, 1.0))
+                time.sleep(max(min(sleep_for, 5.0), 0.5))
                 continue
 
-            console.print(f"[{slug}] ENTRY WINDOW | monitoring every {settings.poll_interval_seconds}s")
+            console.print(f"[{slug}] ENTRY WINDOW | monitoring every {settings.poll_interval_seconds:.1f}s")
             while True:
                 market = discovery.get_market_by_slug(slug)
                 if not market:
