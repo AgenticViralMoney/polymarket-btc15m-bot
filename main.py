@@ -27,6 +27,7 @@ def build_executor(journal: Journal):
             max_worst_price=settings.max_worst_price,
             min_liquidity_on_best_level=settings.min_liquidity_on_best_level,
             stop_loss_price=settings.stop_loss_price,
+            take_profit_price=settings.take_profit_price,
             host=settings.polymarket_host,
             chain_id=settings.chain_id,
             private_key=settings.private_key,
@@ -39,6 +40,7 @@ def build_executor(journal: Journal):
         max_worst_price=settings.max_worst_price,
         min_liquidity_on_best_level=settings.min_liquidity_on_best_level,
         stop_loss_price=settings.stop_loss_price,
+        take_profit_price=settings.take_profit_price,
     )
 
 
@@ -162,6 +164,37 @@ def main() -> None:
                             crossed_threshold=bool(best_price >= settings.min_confidence_price),
                         )
                     )
+
+                open_trade = next(
+                    (
+                        t for t in journal.unsettled_trades()
+                        if t.get('market_slug') == slug and t.get('status') not in {'stopped_out', 'take_profit'}
+                    ),
+                    None,
+                )
+                if open_trade and parsed:
+                    selected_price = None
+                    try:
+                        selected_idx = int(open_trade['outcome_index'])
+                        if 0 <= selected_idx < len(parsed):
+                            selected_price = float(parsed[selected_idx]['price'])
+                    except Exception:
+                        selected_price = None
+
+                    if selected_price is not None and selected_price >= settings.take_profit_price:
+                        result = executor.take_profit_exit(open_trade, selected_price)
+                        console.print(f"Take profit result for {slug}: {result.status}")
+                        journal.add_note(
+                            'take_profit_exit',
+                            {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
+                        )
+                    elif selected_price is not None and selected_price <= settings.stop_loss_price:
+                        result = executor.stop_loss_exit(open_trade, selected_price)
+                        console.print(f"Stop loss result for {slug}: {result.status}")
+                        journal.add_note(
+                            'stop_loss_exit',
+                            {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
+                        )
 
                 if decision.should_trade and (not settings.only_one_trade_per_market or slug not in seen_markets):
                     result = executor.execute(

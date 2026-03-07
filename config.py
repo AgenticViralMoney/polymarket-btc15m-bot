@@ -26,6 +26,7 @@ class Settings(BaseSettings):
     stop_loss_price: float = Field(default=0.50, alias='STOP_LOSS_PRICE')
     min_liquidity_on_best_level: float = Field(default=25.0, alias='MIN_LIQUIDITY_ON_BEST_LEVEL')
     poll_interval_seconds: float = Field(default=0.5, alias='POLL_INTERVAL_SECONDS')
+    take_profit_price: float = Field(default=0.99, alias='TAKE_PROFIT_PRICE')
     only_one_trade_per_market: bool = Field(default=True, alias='ONLY_ONE_TRADE_PER_MARKET')
     skip_seconds_delayed_markets: bool = Field(default=True, alias='SKIP_SECONDS_DELAYED_MARKETS')
     binance_stale_after_seconds: float = Field(default=5.0, alias='BINANCE_STALE_AFTER_SECONDS')
