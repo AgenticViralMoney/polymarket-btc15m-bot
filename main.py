@@ -80,7 +80,9 @@ def main() -> None:
     seen_markets: set[str] = set()
 
     console.print(f"Mode: {'LIVE' if settings.live_trading else 'PAPER'}")
-    console.print('BTC 5m loop: sleep first ~4 minutes, monitor final 90 seconds, buy if UP or DOWN >= 0.80')
+    console.print(
+        f"BTC 5m loop: sleep first ~4 minutes, monitor final {settings.seconds_before_resolution} seconds, buy if UP or DOWN >= {settings.min_confidence_price:.2f}"
+    )
 
     while True:
         try:
