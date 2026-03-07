@@ -80,8 +80,10 @@ def main() -> None:
     seen_markets: set[str] = set()
 
     console.print(f"Mode: {'LIVE' if settings.live_trading else 'PAPER'}")
+    pre_window_seconds = max(300 - settings.seconds_before_resolution, 0)
+    pre_window_minutes = pre_window_seconds / 60
     console.print(
-        f"BTC 5m loop: sleep first ~4 minutes, monitor final {settings.seconds_before_resolution} seconds, buy if UP or DOWN >= {settings.min_confidence_price:.2f}"
+        f"BTC 5m loop: sleep first ~{pre_window_minutes:.0f} minutes, monitor final {settings.seconds_before_resolution} seconds, buy if UP or DOWN >= {settings.min_confidence_price:.2f}"
     )
 
     while True:
