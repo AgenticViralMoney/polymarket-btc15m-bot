@@ -181,11 +181,29 @@ def main() -> None:
                     except Exception:
                         selected_price = None
 
+                    details = dict(open_trade.get('details') or {})
+                    profit_protect_armed = bool(details.get('profit_protect_armed'))
+
+                    if selected_price is not None and not profit_protect_armed and selected_price >= settings.profit_protect_arm_price:
+                        details['profit_protect_armed'] = True
+                        details['profit_protect_armed_at'] = float(selected_price)
+                        journal.update_trade(open_trade['trade_id'], {'details': details})
+                        open_trade['details'] = details
+                        profit_protect_armed = True
+                        console.print(f"Profit protect armed for {slug} at {selected_price:.3f}")
+
                     if selected_price is not None and selected_price >= settings.take_profit_price:
                         result = executor.take_profit_exit(open_trade, selected_price)
                         console.print(f"Take profit result for {slug}: {result.status}")
                         journal.add_note(
                             'take_profit_exit',
+                            {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
+                        )
+                    elif selected_price is not None and profit_protect_armed and selected_price <= settings.profit_protect_exit_price:
+                        result = executor.take_profit_exit(open_trade, selected_price)
+                        console.print(f"Profit protect exit for {slug}: {result.status}")
+                        journal.add_note(
+                            'profit_protect_exit',
                             {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                         )
                     elif selected_price is not None and selected_price <= settings.stop_loss_price:
