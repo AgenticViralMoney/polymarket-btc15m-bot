@@ -18,8 +18,9 @@ class StrategyDecision:
 
 
 class Strategy:
-    def __init__(self, min_confidence_price: float, seconds_before_resolution: int, skip_seconds_delayed_markets: bool = True):
+    def __init__(self, min_confidence_price: float, max_entry_price: float, seconds_before_resolution: int, skip_seconds_delayed_markets: bool = True):
         self.min_confidence_price = min_confidence_price
+        self.max_entry_price = max_entry_price
         self.seconds_before_resolution = seconds_before_resolution
         self.skip_seconds_delayed_markets = skip_seconds_delayed_markets
 
@@ -105,6 +106,19 @@ class Strategy:
                 details={
                     'best_label': best['label'],
                     'best_price': best['price'],
+                    'price_source': source,
+                },
+            )
+
+        if best['price'] >= self.max_entry_price:
+            return StrategyDecision(
+                False,
+                f"best side above max entry price: {best['label']} @ {best['price']:.3f}",
+                seconds_to_resolution=seconds_left,
+                details={
+                    'best_label': best['label'],
+                    'best_price': best['price'],
+                    'max_entry_price': self.max_entry_price,
                     'price_source': source,
                 },
             )

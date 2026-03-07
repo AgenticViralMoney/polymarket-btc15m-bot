@@ -21,8 +21,9 @@ class Settings(BaseSettings):
 
     seconds_before_resolution: int = Field(default=120, alias='SECONDS_BEFORE_RESOLUTION')
     min_confidence_price: float = Field(default=0.80, alias='MIN_CONFIDENCE_PRICE')
-    max_worst_price: float = Field(default=0.985, alias='MAX_WORST_PRICE')
+    max_worst_price: float = Field(default=0.97, alias='MAX_WORST_PRICE')
     trade_size_usd: float = Field(default=10.0, alias='TRADE_SIZE_USD')
+    stop_loss_price: float = Field(default=0.50, alias='STOP_LOSS_PRICE')
     min_liquidity_on_best_level: float = Field(default=25.0, alias='MIN_LIQUIDITY_ON_BEST_LEVEL')
     poll_interval_seconds: float = Field(default=0.5, alias='POLL_INTERVAL_SECONDS')
     only_one_trade_per_market: bool = Field(default=True, alias='ONLY_ONE_TRADE_PER_MARKET')

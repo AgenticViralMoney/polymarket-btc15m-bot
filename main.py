@@ -26,6 +26,7 @@ def build_executor(journal: Journal):
             trade_size_usd=settings.trade_size_usd,
             max_worst_price=settings.max_worst_price,
             min_liquidity_on_best_level=settings.min_liquidity_on_best_level,
+            stop_loss_price=settings.stop_loss_price,
             host=settings.polymarket_host,
             chain_id=settings.chain_id,
             private_key=settings.private_key,
@@ -37,6 +38,7 @@ def build_executor(journal: Journal):
         trade_size_usd=settings.trade_size_usd,
         max_worst_price=settings.max_worst_price,
         min_liquidity_on_best_level=settings.min_liquidity_on_best_level,
+        stop_loss_price=settings.stop_loss_price,
     )
 
 
@@ -65,6 +67,7 @@ def main() -> None:
     discovery = GammaMarketDiscovery(settings.polymarket_gamma_url, settings.polymarket_host)
     strategy = Strategy(
         settings.min_confidence_price,
+        settings.max_worst_price,
         settings.seconds_before_resolution,
         skip_seconds_delayed_markets=settings.skip_seconds_delayed_markets,
     )
@@ -122,6 +125,20 @@ def main() -> None:
                 up_price = parsed[0]['price'] if len(parsed) > 0 else None
                 down_price = parsed[1]['price'] if len(parsed) > 1 else None
                 best_price = max([x['price'] for x in parsed]) if parsed else None
+
+                open_trade = next((t for t in journal.unsettled_trades() if t.get('market_slug') == slug), None)
+                if open_trade is not None:
+                    trade_idx = int(open_trade.get('outcome_index', -1))
+                    trade_price = parsed[trade_idx]['price'] if 0 <= trade_idx < len(parsed) else None
+                    if trade_price is not None and float(trade_price) <= settings.stop_loss_price:
+                        stop_result = executor.stop_loss_exit(open_trade, float(trade_price))
+                        console.print(f"Stop loss result for {slug}: {stop_result.status} | price={float(trade_price):.3f}")
+                        journal.add_note(
+                            'stop_loss_exit',
+                            {'slug': slug, 'result': stop_result.status, 'trade_id': stop_result.trade_id, 'details': stop_result.details},
+                        )
+                        if stop_result.ok:
+                            break
 
                 secs_left = decision.seconds_to_resolution
                 secs_text = 'n/a' if secs_left is None else f"{secs_left:.1f}"
