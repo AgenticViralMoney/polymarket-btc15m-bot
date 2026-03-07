@@ -190,18 +190,19 @@ class PolymarketMarketFeed:
         self._last_error = repr(error)
 
     def _on_message(self, ws: websocket.WebSocketApp, message: str) -> None:
+        receipt_ts = time.time()
         try:
             payload = json.loads(message)
         except Exception:
             return
         if isinstance(payload, list):
             for item in payload:
-                self._handle_event(item)
+                self._handle_event(item, receipt_ts)
             return
         if isinstance(payload, dict):
-            self._handle_event(payload)
+            self._handle_event(payload, receipt_ts)
 
-    def _handle_event(self, event: dict[str, Any]) -> None:
+    def _handle_event(self, event: dict[str, Any], receipt_ts: float) -> None:
         event_type = event.get('event_type')
         if not event_type and 'bids' in event and 'asks' in event and 'asset_id' in event:
             event_type = 'book'
@@ -210,32 +211,28 @@ class PolymarketMarketFeed:
             asset_id = str(event.get('asset_id'))
             best_bid = self._extract_best_price(event.get('bids'), reverse=True)
             best_ask = self._extract_best_price(event.get('asks'), reverse=False)
-            timestamp = self._parse_ts(event.get('timestamp'))
-            self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=timestamp)
+            self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=receipt_ts)
             return
 
         if event_type == 'best_bid_ask':
             asset_id = str(event.get('asset_id'))
             best_bid = self._safe_float(event.get('best_bid'))
             best_ask = self._safe_float(event.get('best_ask'))
-            timestamp = self._parse_ts(event.get('timestamp'))
-            self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=timestamp)
+            self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=receipt_ts)
             return
 
         if event_type == 'price_change':
-            timestamp = self._parse_ts(event.get('timestamp'))
             for change in event.get('price_changes') or []:
                 asset_id = str(change.get('asset_id'))
                 best_bid = self._safe_float(change.get('best_bid'))
                 best_ask = self._safe_float(change.get('best_ask'))
-                self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=timestamp)
+                self._update_quote(asset_id, best_bid=best_bid, best_ask=best_ask, last_update_ts=receipt_ts)
             return
 
         if event_type == 'last_trade_price':
             asset_id = str(event.get('asset_id'))
             last_trade_price = self._safe_float(event.get('price'))
-            timestamp = self._parse_ts(event.get('timestamp'))
-            self._update_quote(asset_id, last_trade_price=last_trade_price, last_update_ts=timestamp)
+            self._update_quote(asset_id, last_trade_price=last_trade_price, last_update_ts=receipt_ts)
 
     def _update_quote(
         self,
@@ -287,12 +284,3 @@ class PolymarketMarketFeed:
             return float(value)
         except Exception:
             return None
-
-    @staticmethod
-    def _parse_ts(value: Any) -> float:
-        if value is None:
-            return time.time()
-        try:
-            return float(value) / 1000.0
-        except Exception:
-            return time.time()
