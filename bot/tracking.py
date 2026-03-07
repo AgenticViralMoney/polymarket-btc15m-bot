@@ -112,7 +112,8 @@ def build_summary(trades: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(trades)
     settled = [t for t in trades if t.get('settled_at')]
     wins = [t for t in settled if (t.get('net_pnl_usdc') or 0) > 0]
-    losses = [t for t in settled if (t.get('net_pnl_usdc') or 0) <= 0]
+    losses = [t for t in settled if (t.get('net_pnl_usdc') or 0) < 0]
+    breakeven = [t for t in settled if (t.get('net_pnl_usdc') or 0) == 0]
     net_pnl = sum(float(t.get('net_pnl_usdc') or 0) for t in settled)
     gross_pnl = sum(float(t.get('gross_pnl_usdc') or 0) for t in settled)
     avg_entry = sum(float(t.get('entry_price') or 0) for t in trades) / total if total else 0.0
@@ -122,6 +123,7 @@ def build_summary(trades: list[dict[str, Any]]) -> dict[str, Any]:
         'open_trades': total - len(settled),
         'wins': len(wins),
         'losses': len(losses),
+        'breakeven': len(breakeven),
         'win_rate': (len(wins) / len(settled)) if settled else 0.0,
         'gross_pnl_usdc': round(gross_pnl, 6),
         'net_pnl_usdc': round(net_pnl, 6),
