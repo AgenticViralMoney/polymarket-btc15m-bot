@@ -277,7 +277,7 @@ def main() -> None:
             break
         except Exception as exc:
             journal.add_note('loop_error', {'error': repr(exc)})
-            console.print(f'[red]Loop error:[/red] {exc}')
+            console.print(f'[red]Loop error:[/red] {repr(exc)}')
             time.sleep(max(settings.poll_interval_seconds, 5))
 
 

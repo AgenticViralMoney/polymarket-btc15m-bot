@@ -6,15 +6,18 @@ from datetime import datetime
 from typing import Any
 
 import requests
+from py_clob_client.client import ClobClient
+from py_clob_client.clob_types import BookParams
 
 from bot.polymarket_ws import PolymarketMarketFeed
 
 
 class GammaMarketDiscovery:
-    def __init__(self, gamma_url: str, clob_host: str = 'https://clob.polymarket.com'):
+    def __init__(self, gamma_url: str, clob_host: str = 'https://clob.polymarket.com', chain_id: int | None = None):
         self.gamma_url = gamma_url.rstrip('/')
         self.clob_host = clob_host.rstrip('/')
         self.market_feed = PolymarketMarketFeed()
+        self.price_client = ClobClient(self.clob_host, chain_id)
         self._subscribed_slug: str | None = None
 
     def get_market_by_slug(self, slug: str) -> dict[str, Any] | None:
@@ -36,6 +39,7 @@ class GammaMarketDiscovery:
                 self._subscribed_slug = slug
             self.market_feed.wait_until_ready(timeout_seconds=wait_ready_timeout_seconds)
             market = self.market_feed.apply_prices_to_market(market)
+        market = self._apply_clob_buy_prices(market)
         return market
 
     def refresh_active_market(self, market: dict[str, Any]) -> dict[str, Any]:
@@ -43,7 +47,8 @@ class GammaMarketDiscovery:
         token_ids = market.get('_parsed_token_ids') or []
         slug = market.get('slug')
         if token_ids and slug == self._subscribed_slug:
-            return self.market_feed.apply_prices_to_market(market)
+            market = self.market_feed.apply_prices_to_market(market)
+            return self._apply_clob_buy_prices(market)
         return self.prepare_market(market)
 
     def find_current_btc_5m_markets(self, horizon_steps: int = 8) -> list[dict[str, Any]]:
@@ -87,6 +92,39 @@ class GammaMarketDiscovery:
                     out.append(market)
         out.sort(key=lambda m: self._end_ts(m))
         return out
+
+    def _apply_clob_buy_prices(self, market: dict[str, Any]) -> dict[str, Any]:
+        market = dict(market)
+        outcomes = market.get('_parsed_outcomes') or []
+        token_ids = market.get('_parsed_token_ids') or []
+        if not outcomes or len(outcomes) != len(token_ids):
+            return market
+        try:
+            prices = self.price_client.get_prices([BookParams(token_id=token_id, side='BUY') for token_id in token_ids])
+        except Exception as exc:
+            market['_clob_price_error'] = repr(exc)
+            return market
+
+        parsed_outcomes = []
+        used_live = False
+        for outcome, token_id in zip(outcomes, token_ids):
+            updated = dict(outcome)
+            token_prices = prices.get(token_id, {}) if isinstance(prices, dict) else {}
+            buy_price = token_prices.get('BUY') if isinstance(token_prices, dict) else None
+            try:
+                buy_price = float(buy_price) if buy_price is not None else None
+            except Exception:
+                buy_price = None
+            if buy_price is not None:
+                updated['price'] = buy_price
+                updated['buy_price'] = buy_price
+                used_live = True
+            parsed_outcomes.append(updated)
+
+        market['_parsed_outcomes'] = parsed_outcomes
+        if used_live:
+            market['_live_price_source'] = 'clob_get_prices'
+        return market
 
     @staticmethod
     def _end_ts(m: dict[str, Any]) -> float:

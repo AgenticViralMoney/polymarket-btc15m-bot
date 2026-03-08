@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from py_clob_client.client import ClobClient
-from py_clob_client.clob_types import MarketOrderArgs, OrderType
+from py_clob_client.clob_types import MarketOrderArgs, OrderType, PartialCreateOrderOptions
 from py_clob_client.order_builder.constants import BUY, SELL
 
 from bot.fees import estimate_crypto_taker_fee_usdc, estimate_fee_shares_on_buy
@@ -153,23 +153,61 @@ class LiveExecutor(BaseExecutor):
         creds = self.client.create_or_derive_api_creds()
         self.client.set_api_creds(creds)
 
+    def _field(self, obj: Any, key: str, default: Any = None) -> Any:
+        if isinstance(obj, dict):
+            return obj.get(key, default)
+        return getattr(obj, key, default)
+
+    def _safe_float(self, value: Any) -> float | None:
+        try:
+            if value is None or value == '':
+                return None
+            return float(value)
+        except Exception:
+            return None
+
+    def _extract_best_ask(self, asks: list[Any]) -> tuple[float | None, float]:
+        best_price = None
+        best_size = 0.0
+        for level in asks or []:
+            price = self._safe_float(self._field(level, 'price'))
+            size = self._safe_float(self._field(level, 'size')) or 0.0
+            if price is None:
+                continue
+            if best_price is None or price < best_price:
+                best_price = price
+                best_size = size
+        return best_price, best_size
+
+    def _extract_best_bid(self, bids: list[Any]) -> tuple[float | None, float]:
+        best_price = None
+        best_size = 0.0
+        for level in bids or []:
+            price = self._safe_float(self._field(level, 'price'))
+            size = self._safe_float(self._field(level, 'size')) or 0.0
+            if price is None:
+                continue
+            if best_price is None or price > best_price:
+                best_price = price
+                best_size = size
+        return best_price, best_size
+
     def preflight(self, token_id: str, ref_price: float) -> dict[str, Any]:
         tick_size = self.client.get_tick_size(token_id)
         neg_risk = self.client.get_neg_risk(token_id)
         book = self.client.get_order_book(token_id)
-        asks = getattr(book, 'asks', []) or []
-        best_ask = float(asks[0].price) if asks else None
-        best_ask_size = float(asks[0].size) if asks else 0.0
+        asks = self._field(book, 'asks', []) or []
+        best_ask, best_ask_size = self._extract_best_ask(asks)
         return {
             'tick_size': tick_size,
             'neg_risk': neg_risk,
             'best_ask': best_ask,
             'best_ask_size': best_ask_size,
             'book_summary': {
-                'market': getattr(book, 'market', None),
-                'asset_id': getattr(book, 'asset_id', None),
-                'tick_size': getattr(book, 'tick_size', None),
-                'min_order_size': getattr(book, 'min_order_size', None),
+                'market': self._field(book, 'market'),
+                'asset_id': self._field(book, 'asset_id'),
+                'tick_size': self._field(book, 'tick_size'),
+                'min_order_size': self._field(book, 'min_order_size'),
             },
             'ref_price': ref_price,
         }
@@ -178,19 +216,18 @@ class LiveExecutor(BaseExecutor):
         tick_size = self.client.get_tick_size(token_id)
         neg_risk = self.client.get_neg_risk(token_id)
         book = self.client.get_order_book(token_id)
-        bids = getattr(book, 'bids', []) or []
-        best_bid = float(bids[0].price) if bids else None
-        best_bid_size = float(bids[0].size) if bids else 0.0
+        bids = self._field(book, 'bids', []) or []
+        best_bid, best_bid_size = self._extract_best_bid(bids)
         return {
             'tick_size': tick_size,
             'neg_risk': neg_risk,
             'best_bid': best_bid,
             'best_bid_size': best_bid_size,
             'book_summary': {
-                'market': getattr(book, 'market', None),
-                'asset_id': getattr(book, 'asset_id', None),
-                'tick_size': getattr(book, 'tick_size', None),
-                'min_order_size': getattr(book, 'min_order_size', None),
+                'market': self._field(book, 'market'),
+                'asset_id': self._field(book, 'asset_id'),
+                'tick_size': self._field(book, 'tick_size'),
+                'min_order_size': self._field(book, 'min_order_size'),
             },
         }
 
@@ -213,10 +250,10 @@ class LiveExecutor(BaseExecutor):
         )
         signed = self.client.create_market_order(
             mo,
-            {
-                'tick_size': pre['tick_size'],
-                'neg_risk': pre['neg_risk'],
-            },
+            PartialCreateOrderOptions(
+                tick_size=pre['tick_size'],
+                neg_risk=pre['neg_risk'],
+            ),
         )
         resp = self.client.post_order(signed, OrderType.FOK)
         details = {
@@ -254,10 +291,10 @@ class LiveExecutor(BaseExecutor):
         )
         signed = self.client.create_market_order(
             mo,
-            {
-                'tick_size': pre['tick_size'],
-                'neg_risk': pre['neg_risk'],
-            },
+            PartialCreateOrderOptions(
+                tick_size=pre['tick_size'],
+                neg_risk=pre['neg_risk'],
+            ),
         )
         resp = self.client.post_order(signed, OrderType.FOK)
         payout = shares_to_sell * float(best_bid)
@@ -301,10 +338,10 @@ class LiveExecutor(BaseExecutor):
         )
         signed = self.client.create_market_order(
             mo,
-            {
-                'tick_size': pre['tick_size'],
-                'neg_risk': pre['neg_risk'],
-            },
+            PartialCreateOrderOptions(
+                tick_size=pre['tick_size'],
+                neg_risk=pre['neg_risk'],
+            ),
         )
         resp = self.client.post_order(signed, OrderType.FOK)
         payout = shares_to_sell * float(best_bid)

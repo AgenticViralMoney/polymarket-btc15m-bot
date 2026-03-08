@@ -147,9 +147,6 @@ class PolymarketMarketFeed:
         market = dict(market)
         status = self.status()
         market['_ws_status'] = status
-        if not status.get('ready'):
-            market['_live_price_source'] = 'polymarket_ws_not_ready'
-            return market
 
         parsed = []
         used_live = False
@@ -166,7 +163,11 @@ class PolymarketMarketFeed:
                     updated['best_ask'] = q.best_ask
                     updated['last_trade_price'] = q.last_trade_price
                     updated['quote_age_seconds'] = (time.time() - q.last_update_ts) if q.last_update_ts else None
-                    if q.buy_price is not None:
+                    if (
+                        q.buy_price is not None
+                        and q.last_update_ts is not None
+                        and (time.time() - q.last_update_ts) <= self.stale_after_seconds
+                    ):
                         updated['price'] = q.buy_price
                         used_live = True
             parsed.append(updated)
