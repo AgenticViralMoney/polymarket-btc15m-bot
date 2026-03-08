@@ -40,6 +40,8 @@ class PolymarketMarketFeed:
         self._ws: websocket.WebSocketApp | None = None
         self._thread: threading.Thread | None = None
         self._stop_event = threading.Event()
+        self._update_event = threading.Event()
+        self._update_counter = 0
         self._last_error: str | None = None
         self._connected = False
 
@@ -52,6 +54,8 @@ class PolymarketMarketFeed:
         self.stop()
         with self._lock:
             self._quotes = {asset_id: OutcomeQuote(asset_id=asset_id) for asset_id in asset_ids}
+            self._update_counter = 0
+        self._update_event.clear()
         self._asset_ids = asset_ids
         self._stop_event.clear()
         self._thread = threading.Thread(target=self._run_forever, name='polymarket-market-feed', daemon=True)
@@ -70,6 +74,7 @@ class PolymarketMarketFeed:
         self._thread = None
         self._ws = None
         self._connected = False
+        self._update_event.set()
 
     def wait_until_ready(self, timeout_seconds: float = 10.0) -> bool:
         deadline = time.time() + timeout_seconds
@@ -95,6 +100,25 @@ class PolymarketMarketFeed:
             return False
         return True
 
+    def current_update_id(self) -> int:
+        with self._lock:
+            return self._update_counter
+
+    def wait_for_update(self, last_update_id: int, timeout_seconds: float = 1.0) -> int:
+        deadline = time.time() + max(timeout_seconds, 0.0)
+        while time.time() < deadline:
+            with self._lock:
+                current = self._update_counter
+            if current > last_update_id:
+                return current
+            remaining = max(0.0, min(0.1, deadline - time.time()))
+            if remaining <= 0:
+                break
+            self._update_event.wait(timeout=remaining)
+            self._update_event.clear()
+        with self._lock:
+            return self._update_counter
+
     def status(self) -> dict[str, Any]:
         with self._lock:
             quotes = {
@@ -115,6 +139,7 @@ class PolymarketMarketFeed:
             'asset_ids': list(self._asset_ids),
             'last_error': self._last_error,
             'sync_gap_seconds': sync_gap,
+            'update_id': self.current_update_id(),
             'quotes': quotes,
         }
 
@@ -256,6 +281,8 @@ class PolymarketMarketFeed:
                 quote.last_trade_price = last_trade_price
             if last_update_ts is not None:
                 quote.last_update_ts = last_update_ts
+            self._update_counter += 1
+        self._update_event.set()
 
     @staticmethod
     def _extract_best_price(levels: Any, reverse: bool) -> float | None:

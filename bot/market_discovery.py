@@ -23,15 +23,28 @@ class GammaMarketDiscovery:
         arr = r.json()
         if isinstance(arr, list) and arr:
             market = self._normalize_market(arr[0])
-            token_ids = market.get('_parsed_token_ids') or []
-            if token_ids:
-                if slug != self._subscribed_slug:
-                    self.market_feed.subscribe(token_ids)
-                    self._subscribed_slug = slug
-                self.market_feed.wait_until_ready(timeout_seconds=3)
-                market = self.market_feed.apply_prices_to_market(market)
-            return market
+            return self.prepare_market(market)
         return None
+
+    def prepare_market(self, market: dict[str, Any], wait_ready_timeout_seconds: float = 3.0) -> dict[str, Any]:
+        market = self._normalize_market(market)
+        token_ids = market.get('_parsed_token_ids') or []
+        slug = market.get('slug')
+        if token_ids:
+            if slug != self._subscribed_slug:
+                self.market_feed.subscribe(token_ids)
+                self._subscribed_slug = slug
+            self.market_feed.wait_until_ready(timeout_seconds=wait_ready_timeout_seconds)
+            market = self.market_feed.apply_prices_to_market(market)
+        return market
+
+    def refresh_active_market(self, market: dict[str, Any]) -> dict[str, Any]:
+        market = self._normalize_market(market)
+        token_ids = market.get('_parsed_token_ids') or []
+        slug = market.get('slug')
+        if token_ids and slug == self._subscribed_slug:
+            return self.market_feed.apply_prices_to_market(market)
+        return self.prepare_market(market)
 
     def find_current_btc_5m_markets(self, horizon_steps: int = 8) -> list[dict[str, Any]]:
         now = int(time.time())

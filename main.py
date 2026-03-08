@@ -115,9 +115,11 @@ def main() -> None:
                 time.sleep(max(min(sleep_for, 5.0), 0.5))
                 continue
 
-            console.print(f"[{slug}] ENTRY WINDOW | monitoring every {settings.poll_interval_seconds:.1f}s")
+            console.print(f"[{slug}] ENTRY WINDOW | waiting for websocket updates")
+            market = discovery.prepare_market(current)
+            last_update_id = discovery.market_feed.current_update_id()
+
             while True:
-                market = discovery.get_market_by_slug(slug)
                 if not market:
                     break
 
@@ -232,7 +234,13 @@ def main() -> None:
                 if secs_left is None or secs_left <= 0 or market.get('closed') or not market.get('acceptingOrders'):
                     break
 
-                time.sleep(settings.poll_interval_seconds)
+                wait_timeout = min(max(settings.poll_interval_seconds, 0.05), max(secs_left, 0.05))
+                new_update_id = discovery.market_feed.wait_for_update(last_update_id, timeout_seconds=wait_timeout)
+                if new_update_id == last_update_id:
+                    market = discovery.get_market_by_slug(slug)
+                else:
+                    last_update_id = new_update_id
+                    market = discovery.refresh_active_market(market)
 
             should_settle = settings.auto_settle_live if settings.live_trading else settings.auto_settle_paper
             if should_settle:
