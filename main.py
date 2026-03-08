@@ -201,6 +201,8 @@ def main() -> None:
                             'take_profit_exit',
                             {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                         )
+                        if result.ok:
+                            break
                     elif selected_price is not None and profit_protect_armed and selected_price <= settings.profit_protect_exit_price:
                         result = executor.take_profit_exit(open_trade, selected_price)
                         console.print(f"Profit protect exit for {slug}: {result.status}")
@@ -208,6 +210,8 @@ def main() -> None:
                             'profit_protect_exit',
                             {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                         )
+                        if result.ok:
+                            break
                     elif selected_price is not None and selected_price <= settings.stop_loss_price:
                         result = executor.stop_loss_exit(open_trade, selected_price)
                         console.print(f"Stop loss result for {slug}: {result.status}")
@@ -215,6 +219,8 @@ def main() -> None:
                             'stop_loss_exit',
                             {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                         )
+                        if result.ok:
+                            break
 
                 if decision.should_trade and (not settings.only_one_trade_per_market or slug not in seen_markets):
                     result = executor.execute(
