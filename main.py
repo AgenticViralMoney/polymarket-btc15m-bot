@@ -235,7 +235,8 @@ def main() -> None:
                         'trade_attempt',
                         {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                     )
-                    seen_markets.add(slug)
+                    if result.ok:
+                        seen_markets.add(slug)
 
                 if secs_left is None or secs_left <= 0 or market.get('closed') or not market.get('acceptingOrders'):
                     break
