@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from py_clob_client.client import ClobClient
+from py_clob_client.exceptions import PolyApiException
 from py_clob_client.clob_types import MarketOrderArgs, OrderType, PartialCreateOrderOptions
 from py_clob_client.order_builder.constants import BUY, SELL
 
@@ -279,14 +280,15 @@ class LiveExecutor(BaseExecutor):
         shares_to_sell = float(trade['shares_net'])
         if best_bid is None:
             return ExecutionResult(False, 'no_bid_liquidity', pre)
-        if pre['best_bid_size'] < shares_to_sell:
-            return ExecutionResult(False, 'insufficient_best_bid_liquidity', pre)
+
+        stop_exit_price = min(float(best_bid), float(market_price), float(self.stop_loss_price))
+        stop_exit_price = max(stop_exit_price, 0.01)
 
         mo = MarketOrderArgs(
             token_id=trade['token_id'],
             amount=shares_to_sell,
             side=SELL,
-            price=float(best_bid),
+            price=float(stop_exit_price),
             order_type=OrderType.FOK,
         )
         signed = self.client.create_market_order(
@@ -296,7 +298,21 @@ class LiveExecutor(BaseExecutor):
                 neg_risk=pre['neg_risk'],
             ),
         )
-        resp = self.client.post_order(signed, OrderType.FOK)
+        try:
+            resp = self.client.post_order(signed, OrderType.FOK)
+        except PolyApiException as exc:
+            details = dict(trade.get('details') or {})
+            details['stop_loss_error'] = {
+                'trigger_price': float(market_price),
+                'attempt_exit_price': float(stop_exit_price),
+                'best_bid': float(best_bid),
+                'best_bid_size': pre['best_bid_size'],
+                'error': repr(exc),
+                'mode': 'live',
+            }
+            self.journal.update_trade(trade['trade_id'], {'details': details})
+            return ExecutionResult(False, 'stop_loss_submit_failed', details, trade_id=trade['trade_id'])
+
         payout = shares_to_sell * float(best_bid)
         gross_pnl = payout - float(trade['amount_usd']) + float(trade.get('entry_fee_usdc_est') or 0)
         net_pnl = payout - float(trade['amount_usd'])
@@ -351,6 +367,7 @@ class LiveExecutor(BaseExecutor):
         details['stop_loss'] = {
             'trigger_price': float(market_price),
             'exit_price': float(best_bid),
+            'attempt_exit_price': float(stop_exit_price),
             'best_bid_size': pre['best_bid_size'],
             'response': resp,
             'mode': 'live',

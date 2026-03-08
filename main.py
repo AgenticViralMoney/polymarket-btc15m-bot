@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import time
+import traceback
 from datetime import datetime, timezone
 
 from rich.console import Console
@@ -105,6 +106,16 @@ def main() -> None:
 
             slug = current['slug']
             secs = _seconds_left(current['endDate'])
+
+            existing_open_trade = next(
+                (t for t in journal.unsettled_trades() if t.get('market_slug') == slug),
+                None,
+            )
+            if slug in seen_markets and existing_open_trade is None:
+                sleep_for = min(max(secs, 0.0), 5.0)
+                console.print(f"[{slug}] already handled, waiting for next market | secs_left={secs:.1f} | sleep={sleep_for:.1f}s")
+                time.sleep(max(min(sleep_for, 5.0), 0.5))
+                continue
 
             if secs > settings.seconds_before_resolution:
                 sleep_for = min(max(secs - settings.seconds_before_resolution, 0.0), 30.0)
@@ -278,6 +289,7 @@ def main() -> None:
         except Exception as exc:
             journal.add_note('loop_error', {'error': repr(exc)})
             console.print(f'[red]Loop error:[/red] {repr(exc)}')
+            traceback.print_exc()
             time.sleep(max(settings.poll_interval_seconds, 5))
 
 
