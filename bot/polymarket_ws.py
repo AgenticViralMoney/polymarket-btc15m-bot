@@ -224,6 +224,11 @@ class PolymarketMarketFeed:
             self._connected = False
             self._msg_count_since_connect = 0
             self._last_message_ts = time.time()
+            # Reset quote timestamps so watchdog doesn't immediately
+            # re-trigger on stale values from the previous connection
+            with self._lock:
+                for q in self._quotes.values():
+                    q.last_update_ts = None
             self._ws = websocket.WebSocketApp(
                 self.ws_url,
                 on_open=self._on_open,
