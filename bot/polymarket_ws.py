@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import json
+import ssl
 import threading
 import time
 from dataclasses import dataclass
 from typing import Any
 
+import certifi
 import websocket
 
 
@@ -189,7 +191,8 @@ class PolymarketMarketFeed:
                 on_close=self._on_close,
             )
             try:
-                self._ws.run_forever(ping_interval=20, ping_timeout=10)
+                ssl_context = ssl.create_default_context(cafile=certifi.where())
+                self._ws.run_forever(ping_interval=20, ping_timeout=10, sslopt={'context': ssl_context})
             except Exception as exc:
                 self._last_error = repr(exc)
             finally:
