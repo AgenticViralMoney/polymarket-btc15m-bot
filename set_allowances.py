@@ -17,8 +17,10 @@ Usage:
 """
 
 import os
+import ssl
 import sys
 
+import certifi
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,8 +39,13 @@ except ImportError:
     print("ERROR: web3 not installed. Run: pip install web3")
     sys.exit(1)
 
-# --- Polygon network ---
-RPC_URL = "https://polygon-rpc.com"
+# --- Polygon network (multiple RPCs for fallback) ---
+RPC_URLS = [
+    "https://polygon-rpc.com",
+    "https://rpc.ankr.com/polygon",
+    "https://polygon.llamarpc.com",
+    "https://polygon-bor-rpc.publicnode.com",
+]
 CHAIN_ID = 137
 
 # --- Contract addresses (Polygon mainnet) ---
@@ -93,9 +100,26 @@ def send_and_wait(w3, raw_tx, label):
 
 
 def main():
-    w3 = Web3(Web3.HTTPProvider(RPC_URL))
-    if not w3.is_connected():
-        print("ERROR: Cannot connect to Polygon RPC")
+    # Fix macOS SSL certificate issues by pointing to certifi CA bundle
+    os.environ["SSL_CERT_FILE"] = certifi.where()
+    os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
+
+    w3 = None
+    for rpc_url in RPC_URLS:
+        try:
+            provider = Web3.HTTPProvider(rpc_url, request_kwargs={"timeout": 10})
+            candidate = Web3(provider)
+            if candidate.is_connected():
+                print(f"Connected to: {rpc_url}")
+                w3 = candidate
+                break
+            else:
+                print(f"  {rpc_url} -- not responding, trying next...")
+        except Exception as e:
+            print(f"  {rpc_url} -- failed: {e}")
+
+    if w3 is None:
+        print("ERROR: Cannot connect to any Polygon RPC. Check your internet / SSL.")
         sys.exit(1)
 
     # Use the funder address (proxy wallet) as the transaction sender
