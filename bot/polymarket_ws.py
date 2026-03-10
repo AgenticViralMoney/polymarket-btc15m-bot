@@ -203,7 +203,7 @@ class PolymarketMarketFeed:
             if ws is None or not self._connected:
                 continue
             # Only act if we had a healthy stream that then went silent
-            if self._msg_count_since_connect < 5:
+            if self._msg_count_since_connect < 15:
                 continue
             silence = time.time() - self._last_message_ts
             if silence > self.reconnect_after_silent_seconds:
