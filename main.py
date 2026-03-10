@@ -8,6 +8,7 @@ from rich.console import Console
 
 from config import settings
 from bot.execution import LiveExecutor, PaperExecutor
+from bot.live_btc_feed import LiveBTCFeed
 from bot.market_discovery import GammaMarketDiscovery
 from bot.state import Journal
 from bot.strategy import Strategy
@@ -74,6 +75,13 @@ def main() -> None:
         settings.seconds_before_resolution,
         skip_seconds_delayed_markets=settings.skip_seconds_delayed_markets,
     )
+    btc_feed = LiveBTCFeed(
+        history_seconds=1800,
+        volatility_lookback_seconds=settings.binance_volatility_lookback_seconds,
+        stale_after_seconds=settings.binance_stale_after_seconds,
+    )
+    btc_feed.start()
+
     executor = build_executor(journal)
     tracker = SettlementTracker(
         gamma_url=settings.polymarket_gamma_url,
@@ -86,21 +94,21 @@ def main() -> None:
     seen_markets: set[str] = set()
 
     console.print(f"Mode: {'LIVE' if settings.live_trading else 'PAPER'}")
-    pre_window_seconds = max(300 - settings.seconds_before_resolution, 0)
+    pre_window_seconds = max(900 - settings.seconds_before_resolution, 0)
     pre_window_minutes = pre_window_seconds / 60
     console.print(
-        f"BTC 5m loop: sleep first ~{pre_window_minutes:.0f} minutes, monitor final {settings.seconds_before_resolution} seconds, buy if UP or DOWN >= {settings.min_confidence_price:.2f}"
+        f"BTC 15m loop: sleep first ~{pre_window_minutes:.0f} minutes, monitor final {settings.seconds_before_resolution} seconds, buy if UP or DOWN >= {settings.min_confidence_price:.2f}"
     )
 
     while True:
         try:
-            markets = discovery.find_current_btc_5m_markets()
+            markets = discovery.find_current_btc_15m_markets()
             if not markets:
-                markets = discovery.list_recent_btc_5m_markets_via_search()
+                markets = discovery.list_recent_btc_15m_markets_via_search()
 
             current = _pick_current_market(markets) if markets else None
             if not current:
-                console.print('[yellow]No current BTC 5-minute market found[/yellow]')
+                console.print('[yellow]No current BTC 15-minute market found[/yellow]')
                 time.sleep(max(settings.poll_interval_seconds, 5))
                 continue
 
@@ -128,7 +136,10 @@ def main() -> None:
 
             console.print(f"[{slug}] ENTRY WINDOW | waiting for websocket updates")
             market = discovery.prepare_market(current)
+            signal = btc_feed.build_market_signal(market)
+            market['_signal_context'] = signal
             last_update_id = discovery.market_feed.current_update_id()
+
 
             while True:
                 if not market:
@@ -145,7 +156,7 @@ def main() -> None:
                 if open_trade is not None:
                     trade_idx = int(open_trade.get('outcome_index', -1))
                     trade_price = parsed[trade_idx]['price'] if 0 <= trade_idx < len(parsed) else None
-                    if trade_price is not None and float(trade_price) <= settings.stop_loss_price:
+                    if trade_price is not None and float(trade_price) <= float((open_trade.get('details') or {}).get('stop_loss_price', settings.stop_loss_price)):
                         stop_result = executor.stop_loss_exit(open_trade, float(trade_price))
                         console.print(f"Stop loss result for {slug}: {stop_result.status} | price={float(trade_price):.3f}")
                         journal.add_note(
@@ -197,7 +208,7 @@ def main() -> None:
                     details = dict(open_trade.get('details') or {})
                     profit_protect_armed = bool(details.get('profit_protect_armed'))
 
-                    if selected_price is not None and not profit_protect_armed and selected_price >= settings.profit_protect_arm_price:
+                    if selected_price is not None and not profit_protect_armed and float(open_trade.get('entry_price', 0)) < 0.89 and selected_price >= settings.profit_protect_arm_price:
                         details['profit_protect_armed'] = True
                         details['profit_protect_armed_at'] = float(selected_price)
                         journal.update_trade(open_trade['trade_id'], {'details': details})
@@ -223,7 +234,7 @@ def main() -> None:
                         )
                         if result.ok:
                             break
-                    elif selected_price is not None and selected_price <= settings.stop_loss_price:
+                    elif selected_price is not None and selected_price <= float((open_trade.get('details') or {}).get('stop_loss_price', settings.stop_loss_price)):
                         result = executor.stop_loss_exit(open_trade, selected_price)
                         console.print(f"Stop loss result for {slug}: {result.status}")
                         journal.add_note(
@@ -233,7 +244,7 @@ def main() -> None:
                         if result.ok:
                             break
 
-                if decision.should_trade and (not settings.only_one_trade_per_market or slug not in seen_markets):
+                if decision.should_trade and (secs_left is None or secs_left > 10) and (not settings.only_one_trade_per_market or slug not in seen_markets):
                     result = executor.execute(
                         market,
                         token_id=decision.chosen_token_id,
@@ -246,19 +257,22 @@ def main() -> None:
                         'trade_attempt',
                         {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                     )
-                    if result.ok:
-                        seen_markets.add(slug)
-
+                    seen_markets.add(slug)
                 if secs_left is None or secs_left <= 0 or market.get('closed') or not market.get('acceptingOrders'):
                     break
 
                 wait_timeout = min(max(settings.poll_interval_seconds, 0.05), max(secs_left, 0.05))
                 new_update_id = discovery.market_feed.wait_for_update(last_update_id, timeout_seconds=wait_timeout)
+
                 if new_update_id == last_update_id:
                     market = discovery.get_market_by_slug(slug)
                 else:
                     last_update_id = new_update_id
                     market = discovery.refresh_active_market(market)
+
+                if market:
+                    signal = btc_feed.build_market_signal(market)
+                    market['_signal_context'] = signal
 
             should_settle = settings.auto_settle_live if settings.live_trading else settings.auto_settle_paper
             if should_settle:

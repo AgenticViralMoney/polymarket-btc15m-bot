@@ -256,7 +256,22 @@ class LiveExecutor(BaseExecutor):
                 neg_risk=pre['neg_risk'],
             ),
         )
-        resp = self.client.post_order(signed, OrderType.FOK)
+        try:
+            resp = self.client.post_order(signed, OrderType.FOK)
+        except PolyApiException as exc:
+            details = {
+                'error': repr(exc),
+                'ref_price': ref_price,
+                'best_ask': best_ask,
+                'best_ask_size': pre['best_ask_size'],
+                'tick_size': pre['tick_size'],
+                'neg_risk': pre['neg_risk'],
+                'live': True,
+                'stop_loss_price': 0.75 if float(best_ask) >= 0.87 else self.stop_loss_price,
+                'take_profit_price': self.take_profit_price,
+            }
+            return ExecutionResult(False, 'entry_submit_failed', details)
+
         details = {
             'response': resp,
             'ref_price': ref_price,
@@ -267,7 +282,7 @@ class LiveExecutor(BaseExecutor):
             'response_status': resp.get('status') if isinstance(resp, dict) else None,
             'order_id': resp.get('orderID') if isinstance(resp, dict) else None,
             'live': True,
-            'stop_loss_price': self.stop_loss_price,
+            'stop_loss_price': 0.75 if float(best_ask) >= 0.87 else self.stop_loss_price,
             'take_profit_price': self.take_profit_price,
         }
         record = self._base_trade_record(market, token_id, outcome, outcome_index, best_ask, str(resp.get('status', 'submitted')) if isinstance(resp, dict) else 'submitted', details)
@@ -280,8 +295,67 @@ class LiveExecutor(BaseExecutor):
         shares_to_sell = float(trade['shares_net'])
         if best_bid is None:
             return ExecutionResult(False, 'no_bid_liquidity', pre)
+        if pre['best_bid_size'] < shares_to_sell:
+            return ExecutionResult(False, 'insufficient_best_bid_liquidity', pre)
 
-        stop_exit_price = min(float(best_bid), float(market_price), float(self.stop_loss_price))
+        mo = MarketOrderArgs(
+            token_id=trade['token_id'],
+            amount=shares_to_sell,
+            side=SELL,
+            price=float(best_bid),
+            order_type=OrderType.FOK,
+        )
+        signed = self.client.create_market_order(
+            mo,
+            PartialCreateOrderOptions(
+                tick_size=pre['tick_size'],
+                neg_risk=pre['neg_risk'],
+            ),
+        )
+        try:
+            resp = self.client.post_order(signed, OrderType.FOK)
+        except PolyApiException as e:
+            details = dict(trade.get('details') or {})
+            details['take_profit_error'] = {
+                'trigger_price': float(market_price),
+                'exit_price': float(best_bid),
+                'best_bid_size': pre['best_bid_size'],
+                'error': str(e),
+                'mode': 'live',
+            }
+            return ExecutionResult(False, 'take_profit_submit_failed', details, trade_id=trade['trade_id'])
+
+        payout = shares_to_sell * float(best_bid)
+        gross_pnl = payout - float(trade['amount_usd']) + float(trade.get('entry_fee_usdc_est') or 0)
+        net_pnl = payout - float(trade['amount_usd'])
+        details = dict(trade.get('details') or {})
+        details['take_profit'] = {
+            'trigger_price': float(market_price),
+            'exit_price': float(best_bid),
+            'best_bid_size': pre['best_bid_size'],
+            'response': resp,
+            'mode': 'live',
+        }
+        updates = {
+            'settled_at': datetime.now(timezone.utc).isoformat(),
+            'settlement_source': 'live_take_profit',
+            'payout_usdc': round(payout, 6),
+            'gross_pnl_usdc': round(gross_pnl, 6),
+            'net_pnl_usdc': round(net_pnl, 6),
+            'status': 'take_profit',
+            'details': details,
+        }
+        self.journal.update_trade(trade['trade_id'], updates)
+        return ExecutionResult(True, 'take_profit', updates, trade_id=trade['trade_id'])
+
+    def stop_loss_exit(self, trade: dict[str, Any], market_price: float) -> ExecutionResult:
+        pre = self.stop_loss_preflight(trade['token_id'])
+        best_bid = pre['best_bid']
+        shares_to_sell = float(trade['shares_net'])
+        if best_bid is None:
+            return ExecutionResult(False, 'no_bid_liquidity', pre)
+
+        stop_exit_price = 0.01
         stop_exit_price = max(stop_exit_price, 0.01)
 
         mo = MarketOrderArgs(
@@ -313,53 +387,6 @@ class LiveExecutor(BaseExecutor):
             self.journal.update_trade(trade['trade_id'], {'details': details})
             return ExecutionResult(False, 'stop_loss_submit_failed', details, trade_id=trade['trade_id'])
 
-        payout = shares_to_sell * float(best_bid)
-        gross_pnl = payout - float(trade['amount_usd']) + float(trade.get('entry_fee_usdc_est') or 0)
-        net_pnl = payout - float(trade['amount_usd'])
-        details = dict(trade.get('details') or {})
-        details['take_profit'] = {
-            'trigger_price': float(market_price),
-            'exit_price': float(best_bid),
-            'best_bid_size': pre['best_bid_size'],
-            'response': resp,
-            'mode': 'live',
-        }
-        updates = {
-            'settled_at': datetime.now(timezone.utc).isoformat(),
-            'settlement_source': 'live_take_profit',
-            'payout_usdc': round(payout, 6),
-            'gross_pnl_usdc': round(gross_pnl, 6),
-            'net_pnl_usdc': round(net_pnl, 6),
-            'status': 'take_profit',
-            'details': details,
-        }
-        self.journal.update_trade(trade['trade_id'], updates)
-        return ExecutionResult(True, 'take_profit', updates, trade_id=trade['trade_id'])
-
-    def stop_loss_exit(self, trade: dict[str, Any], market_price: float) -> ExecutionResult:
-        pre = self.stop_loss_preflight(trade['token_id'])
-        best_bid = pre['best_bid']
-        shares_to_sell = float(trade['shares_net'])
-        if best_bid is None:
-            return ExecutionResult(False, 'no_bid_liquidity', pre)
-        if pre['best_bid_size'] < shares_to_sell:
-            return ExecutionResult(False, 'insufficient_best_bid_liquidity', pre)
-
-        mo = MarketOrderArgs(
-            token_id=trade['token_id'],
-            amount=shares_to_sell,
-            side=SELL,
-            price=float(best_bid),
-            order_type=OrderType.FOK,
-        )
-        signed = self.client.create_market_order(
-            mo,
-            PartialCreateOrderOptions(
-                tick_size=pre['tick_size'],
-                neg_risk=pre['neg_risk'],
-            ),
-        )
-        resp = self.client.post_order(signed, OrderType.FOK)
         payout = shares_to_sell * float(best_bid)
         gross_pnl = payout - float(trade['amount_usd']) + float(trade.get('entry_fee_usdc_est') or 0)
         net_pnl = payout - float(trade['amount_usd'])

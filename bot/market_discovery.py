@@ -51,23 +51,23 @@ class GammaMarketDiscovery:
             return self._apply_clob_buy_prices(market)
         return self.prepare_market(market)
 
-    def find_current_btc_5m_markets(self, horizon_steps: int = 8) -> list[dict[str, Any]]:
+    def find_current_btc_15m_markets(self, horizon_steps: int = 8) -> list[dict[str, Any]]:
         now = int(time.time())
-        base = now - (now % 300)
+        base = now - (now % 900)
         candidate_ts = [
-            base - 300,
+            base - 900,
             base,
-            base + 300,
-            base + 600,
             base + 900,
-            base + 1200,
-            base + 1500,
             base + 1800,
+            base + 2700,
+            base + 3600,
+            base + 4500,
+            base + 5400,
         ][:horizon_steps]
         found: list[dict[str, Any]] = []
         seen: set[str] = set()
         for ts in candidate_ts:
-            slug = f'btc-updown-5m-{ts}'
+            slug = f'btc-updown-15m-{ts}'
             market = self.get_market_by_slug(slug)
             if not market:
                 continue
@@ -87,6 +87,21 @@ class GammaMarketDiscovery:
         for e in events:
             slug = (e.get('slug') or '').lower()
             if slug.startswith('btc-updown-5m-'):
+                market = self.get_market_by_slug(slug)
+                if market:
+                    out.append(market)
+        out.sort(key=lambda m: self._end_ts(m))
+        return out
+
+    def list_recent_btc_15m_markets_via_search(self, query: str = 'bitcoin up or down 15 minutes') -> list[dict[str, Any]]:
+        r = requests.get(f"{self.gamma_url}/public-search", params={'q': query}, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+        events = data.get('events', []) if isinstance(data, dict) else []
+        out: list[dict[str, Any]] = []
+        for e in events:
+            slug = (e.get('slug') or '').lower()
+            if slug.startswith('btc-updown-15m-'):
                 market = self.get_market_by_slug(slug)
                 if market:
                     out.append(market)

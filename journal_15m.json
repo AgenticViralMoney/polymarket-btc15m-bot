@@ -1,0 +1,4758 @@
+{
+  "trades": [
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773050400",
+      "market_question": "Bitcoin Up or Down - March 9, 6:00AM-6:15AM ET",
+      "condition_id": "0x6d9d91e528807d2c8e4a42f9c4371119cacb773f127eaf4737b9c91c3d768646",
+      "token_id": "33560256223847605071997569391832557577246411611452449542177780174464044892980",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.79,
+      "amount_usd": 5.0,
+      "shares_gross": 6.329113924050633,
+      "shares_net": 6.288607594936709,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04050632911392405,
+      "end_date": "2026-03-09T10:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "dc811dbab07f43e6b9f3a7eb1875277d",
+      "placed_at": "2026-03-09T10:13:25.733421+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T10:13:37.294945+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.219544,
+      "gross_pnl_usdc": 0.251544,
+      "net_pnl_usdc": 0.219544,
+      "details": {
+        "ref_price": 0.79,
+        "worst_price_cap": 0.79,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.93,
+        "take_profit": {
+          "trigger_price": 0.83,
+          "exit_price": 0.83,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773051300",
+      "market_question": "Bitcoin Up or Down - March 9, 6:15AM-6:30AM ET",
+      "condition_id": "0x17275e3298310f83f98b34beaef46010b1ddbd735259708814ad708a50a57d81",
+      "token_id": "62902996043343684834518319149543868414897996960666950572301448291455386573902",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.7909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.3211522737279076,
+      "shares_net": 6.280696899176049,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04045537455185861,
+      "end_date": "2026-03-09T10:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "cd64279d5bf94c25a4a0707ddaa3ef7e",
+      "placed_at": "2026-03-09T10:28:32.533303+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T10:29:14.944656+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.21789,
+      "gross_pnl_usdc": 1.24989,
+      "net_pnl_usdc": 1.21789,
+      "details": {
+        "ref_price": 0.7909950248756219,
+        "worst_price_cap": 0.7909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.96,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773052200",
+      "market_question": "Bitcoin Up or Down - March 9, 6:30AM-6:45AM ET",
+      "condition_id": "0x2fde1bccd0265183cead455a5e80f36fb6a08502af96987d56c3636fea9e9505",
+      "token_id": "51319292267917981928645874818079763234545135521947401363596301543317010145191",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.850995024875622,
+      "amount_usd": 5.0,
+      "shares_gross": 5.875475007307804,
+      "shares_net": 5.851631102016953,
+      "entry_fee_usdc_est": 0.020291044776119385,
+      "entry_fee_shares_est": 0.023843905290850606,
+      "end_date": "2026-03-09T10:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "cf9ba0ffb61245cc912f66ae8aa7c5f1",
+      "placed_at": "2026-03-09T10:41:30.873017+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T10:43:11.463595+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.793115,
+      "gross_pnl_usdc": 0.813406,
+      "net_pnl_usdc": 0.793115,
+      "details": {
+        "ref_price": 0.850995024875622,
+        "worst_price_cap": 0.850995024875622,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773053100",
+      "market_question": "Bitcoin Up or Down - March 9, 6:45AM-7:00AM ET",
+      "condition_id": "0x71ee663b4181b05541a5aff475dafccbfd22217a5ad666830ba4415b18e6e55f",
+      "token_id": "23932929889621288946956600984344976855586440499071732082765996764054696444225",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.84,
+      "amount_usd": 5.0,
+      "shares_gross": 5.9523809523809526,
+      "shares_net": 5.925238095238095,
+      "entry_fee_usdc_est": 0.022800000000000008,
+      "entry_fee_shares_est": 0.027142857142857153,
+      "end_date": "2026-03-09T11:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "de3cdd5499564c2a82c7ee2c9a07d928",
+      "placed_at": "2026-03-09T10:56:07.839481+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T10:58:07.602706+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.154957,
+      "gross_pnl_usdc": 0.177757,
+      "net_pnl_usdc": 0.154957,
+      "details": {
+        "ref_price": 0.84,
+        "worst_price_cap": 0.84,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.87,
+          "exit_price": 0.87,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773054000",
+      "market_question": "Bitcoin Up or Down - March 9, 7:00AM-7:15AM ET",
+      "condition_id": "0xdf25997c9d313e7d7e97cd95fbbeec63bce7f6fa575e0f921d10bf31bd8acbe8",
+      "token_id": "87239630470822519603379489990445224360404465279114837659339121612442687398420",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8009950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.24223602484472,
+      "shares_net": 6.202571428571428,
+      "entry_fee_usdc_est": 0.03177114427860697,
+      "entry_fee_shares_est": 0.039664596273291934,
+      "end_date": "2026-03-09T11:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "56ac40748d0e439a8c0f09e1d1f1980a",
+      "placed_at": "2026-03-09T11:12:28.884209+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T11:14:26.043398+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.140546,
+      "gross_pnl_usdc": 1.172317,
+      "net_pnl_usdc": 1.140546,
+      "details": {
+        "ref_price": 0.8009950248756219,
+        "worst_price_cap": 0.8009950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.93,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773055800",
+      "market_question": "Bitcoin Up or Down - March 9, 7:30AM-7:45AM ET",
+      "condition_id": "0x9c9b73e482cf293d6a3c330313d50111b5c2b2739bbadee81fabb8e3b9bc7b93",
+      "token_id": "88931272412962258180088627360953511476037427908131168906765354836436795504769",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8309950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.016883194635694,
+      "shares_net": 5.986953840627432,
+      "entry_fee_usdc_est": 0.02487114427860696,
+      "entry_fee_shares_est": 0.029929354008261983,
+      "end_date": "2026-03-09T11:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "413cd8477c4f4fd3bfb4b49256e93f5f",
+      "placed_at": "2026-03-09T11:41:36.449992+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T11:43:18.010282+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.927084,
+      "gross_pnl_usdc": 0.951955,
+      "net_pnl_usdc": 0.927084,
+      "details": {
+        "ref_price": 0.8309950248756219,
+        "worst_price_cap": 0.8309950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773057600",
+      "market_question": "Bitcoin Up or Down - March 9, 8:00AM-8:15AM ET",
+      "condition_id": "0x569e4b43c05f2a3ee16acb1f20dabf8e11eeb72cfb159c940fc5d18668555571",
+      "token_id": "26707340036429892781175291899859080763372559539084041719416512457465486280307",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.83,
+      "amount_usd": 5.0,
+      "shares_gross": 6.024096385542169,
+      "shares_net": 5.993855421686748,
+      "entry_fee_usdc_est": 0.02510000000000001,
+      "entry_fee_shares_est": 0.0302409638554217,
+      "end_date": "2026-03-09T12:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "d6775ee939fb41e6bd79b5417e817d99",
+      "placed_at": "2026-03-09T12:11:36.609103+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T12:13:57.468777+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.933917,
+      "gross_pnl_usdc": 0.959017,
+      "net_pnl_usdc": 0.933917,
+      "details": {
+        "ref_price": 0.83,
+        "worst_price_cap": 0.83,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.94,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773059400",
+      "market_question": "Bitcoin Up or Down - March 9, 8:30AM-8:45AM ET",
+      "condition_id": "0xa76cc814172a7c6d8e92460d9483409db8c665156a52e483ea17c6c41a5e8344",
+      "token_id": "76661213387129892050742412667237243457928486041830483646815176539427046548556",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.9,
+      "amount_usd": 5.0,
+      "shares_gross": 5.555555555555555,
+      "shares_net": 5.544444444444444,
+      "entry_fee_usdc_est": 0.01,
+      "entry_fee_shares_est": 0.011111111111111112,
+      "end_date": "2026-03-09T12:45:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "074fdf0a59544ffb908099fcffd6be4e",
+      "placed_at": "2026-03-09T12:42:40.063851+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T12:43:42.443206+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.326667,
+      "gross_pnl_usdc": -1.663333,
+      "net_pnl_usdc": -1.673333,
+      "details": {
+        "ref_price": 0.9,
+        "worst_price_cap": 0.9,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.48,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773060300",
+      "market_question": "Bitcoin Up or Down - March 9, 8:45AM-9:00AM ET",
+      "condition_id": "0xc9ef64ac0f1085476bbd533d67066c5f3519876faa37baa450124170a87aae45",
+      "token_id": "57310784708974427084324391293009051435899188677526561912086859740348158846590",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.83,
+      "amount_usd": 5.0,
+      "shares_gross": 6.024096385542169,
+      "shares_net": 5.993855421686748,
+      "entry_fee_usdc_est": 0.02510000000000001,
+      "entry_fee_shares_est": 0.0302409638554217,
+      "end_date": "2026-03-09T13:00:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "408e65c5f3054d34a20b88acce79e1c4",
+      "placed_at": "2026-03-09T12:57:23.253628+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T12:58:06.586855+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.596313,
+      "gross_pnl_usdc": -1.378587,
+      "net_pnl_usdc": -1.403687,
+      "details": {
+        "ref_price": 0.83,
+        "worst_price_cap": 0.83,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.5309950248756219,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773062100",
+      "market_question": "Bitcoin Up or Down - March 9, 9:15AM-9:30AM ET",
+      "condition_id": "0xae7e8fc90a19034403ce96f8745782b8d85060e0869e774e077de0f0fe64dc0c",
+      "token_id": "45380707178192330373340017942958104195247086612821264247652598591666049491700",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.911,
+      "amount_usd": 5.0,
+      "shares_gross": 5.48847420417124,
+      "shares_net": 5.4791877058177825,
+      "entry_fee_usdc_est": 0.008459999999999997,
+      "entry_fee_shares_est": 0.009286498353457736,
+      "end_date": "2026-03-09T13:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "2803e47488c845b58de71788d52d0c39",
+      "placed_at": "2026-03-09T13:26:44.706775+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T13:28:42.976768+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.424396,
+      "gross_pnl_usdc": 0.432856,
+      "net_pnl_usdc": 0.424396,
+      "details": {
+        "ref_price": 0.911,
+        "worst_price_cap": 0.911,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773063000",
+      "market_question": "Bitcoin Up or Down - March 9, 9:30AM-9:45AM ET",
+      "condition_id": "0x685d92a3d2982d96f204675a0c3a5ec794e9bda05899db7da7bc9c21393e0a65",
+      "token_id": "6143257517802629559154754138935452175933406049733898354618435539835810227481",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-09T13:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "43f6942f63c5480e83a454e30309cea9",
+      "placed_at": "2026-03-09T13:42:43.233636+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T13:43:42.498139+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.074811,
+      "gross_pnl_usdc": 1.104511,
+      "net_pnl_usdc": 1.074811,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9209950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773066600",
+      "market_question": "Bitcoin Up or Down - March 9, 10:30AM-10:45AM ET",
+      "condition_id": "0x16719bdacc4039875329fd13352be0daa295d7a28abdeed9070070b830c7a88f",
+      "token_id": "48821659957290911628954375092662453760724333159986725337710022011494515488245",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.86,
+      "amount_usd": 5.0,
+      "shares_gross": 5.813953488372093,
+      "shares_net": 5.792558139534884,
+      "entry_fee_usdc_est": 0.0184,
+      "entry_fee_shares_est": 0.021395348837209303,
+      "end_date": "2026-03-09T14:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "5c3ad6ad2f004c73a8bd99b11a42cee5",
+      "placed_at": "2026-03-09T14:42:08.023569+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T14:43:33.133434+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.734633,
+      "gross_pnl_usdc": 0.753033,
+      "net_pnl_usdc": 0.734633,
+      "details": {
+        "ref_price": 0.86,
+        "worst_price_cap": 0.86,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9209950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773068400",
+      "market_question": "Bitcoin Up or Down - March 9, 11:00AM-11:15AM ET",
+      "condition_id": "0xf229f1f48d6608ddeef24f034da5fc188a8fa5c4d9a8b67dc03e006d6c9a7090",
+      "token_id": "105160629594662581603703132104680664625419249610688273431988240811037652568193",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.7909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.3211522737279076,
+      "shares_net": 6.280696899176049,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04045537455185861,
+      "end_date": "2026-03-09T15:15:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "a6307ed19b494c4ea186ce6f7ac392a2",
+      "placed_at": "2026-03-09T15:11:37.059327+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T15:12:31.688467+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.768418,
+      "gross_pnl_usdc": -1.199582,
+      "net_pnl_usdc": -1.231582,
+      "details": {
+        "ref_price": 0.7909950248756219,
+        "worst_price_cap": 0.7909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.59,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773069300",
+      "market_question": "Bitcoin Up or Down - March 9, 11:15AM-11:30AM ET",
+      "condition_id": "0xcedc139457ebea73fbcef8cf8e267b568084b76d1cafa7fdcc89c69983274bf5",
+      "token_id": "58875984539654299124446246073939509895195172564582047447773700072500043132076",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.82,
+      "amount_usd": 5.0,
+      "shares_gross": 6.097560975609756,
+      "shares_net": 6.064146341463415,
+      "entry_fee_usdc_est": 0.027400000000000015,
+      "entry_fee_shares_est": 0.033414634146341486,
+      "end_date": "2026-03-09T15:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "bf550b299cfb4ee39ed86a9605a70da8",
+      "placed_at": "2026-03-09T15:27:49.058064+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T15:29:33.942213+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.009569,
+      "gross_pnl_usdc": 1.036969,
+      "net_pnl_usdc": 1.009569,
+      "details": {
+        "ref_price": 0.82,
+        "worst_price_cap": 0.82,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9409950248756219,
+        "take_profit": {
+          "trigger_price": 0.9909999801944901,
+          "exit_price": 0.9909999801944901,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773072000",
+      "market_question": "Bitcoin Up or Down - March 9, 12:00PM-12:15PM ET",
+      "condition_id": "0x8fe1e56e129d84deb5964f9cc38742028f4eaae5ba49b843553e06a6b431f132",
+      "token_id": "105120551923898817404751835197986273660641296845905192264698010543436017452937",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-09T16:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "8fa92cbb5adf4adea0192336e889aa63",
+      "placed_at": "2026-03-09T16:11:16.893673+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T16:12:19.065938+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.33847,
+      "gross_pnl_usdc": 0.36817,
+      "net_pnl_usdc": 0.33847,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.87,
+          "exit_price": 0.87,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773072900",
+      "market_question": "Bitcoin Up or Down - March 9, 12:15PM-12:30PM ET",
+      "condition_id": "0xe1db91c0755e0b05c9eb6122b84aabb96f527c1482f51d3faa7dbc4cbb791fe5",
+      "token_id": "32741744047256490932866674323763524656642612084987053308190293950401015700492",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.91,
+      "amount_usd": 5.0,
+      "shares_gross": 5.4945054945054945,
+      "shares_net": 5.485054945054945,
+      "entry_fee_usdc_est": 0.008599999999999997,
+      "entry_fee_shares_est": 0.009450549450549446,
+      "end_date": "2026-03-09T16:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "fb7820af1614450fa69e468d69e1fa9f",
+      "placed_at": "2026-03-09T16:26:34.974685+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T16:28:16.404982+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.430204,
+      "gross_pnl_usdc": 0.438804,
+      "net_pnl_usdc": 0.430204,
+      "details": {
+        "ref_price": 0.91,
+        "worst_price_cap": 0.91,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773073800",
+      "market_question": "Bitcoin Up or Down - March 9, 12:30PM-12:45PM ET",
+      "condition_id": "0xc38bbd6c3e22e5afbee3e017a045408835e4cdcfee5391965ccd57b404bd77fe",
+      "token_id": "43778167348594157747767773849997013788222403380440166502878087955916405382420",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8009950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.24223602484472,
+      "shares_net": 6.202571428571428,
+      "entry_fee_usdc_est": 0.03177114427860697,
+      "entry_fee_shares_est": 0.039664596273291934,
+      "end_date": "2026-03-09T16:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "93024c692d0f42d384c7597b31d97f96",
+      "placed_at": "2026-03-09T16:42:15.009498+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T16:43:57.922210+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.140546,
+      "gross_pnl_usdc": 1.172317,
+      "net_pnl_usdc": 1.140546,
+      "details": {
+        "ref_price": 0.8009950248756219,
+        "worst_price_cap": 0.8009950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773074700",
+      "market_question": "Bitcoin Up or Down - March 9, 12:45PM-1:00PM ET",
+      "condition_id": "0x171fe6cad39d83f2e975b16a4d638b355435cb9f7bfdcd8f36dac3be2da8374d",
+      "token_id": "10209247970817827492488249024981752522733642279529252892921287508507213462685",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-09T17:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "380f1395161b469cb2b1525b5fc878db",
+      "placed_at": "2026-03-09T16:56:48.684798+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T16:59:02.810824+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.1479,
+      "gross_pnl_usdc": 1.1799,
+      "net_pnl_usdc": 1.1479,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773075600",
+      "market_question": "Bitcoin Up or Down - March 9, 1:00PM-1:15PM ET",
+      "condition_id": "0x5914059d6622b0691c1c4f8a82f753f41dcfd7969e31753b46cd85e5b6604332",
+      "token_id": "65254867008334173712971282812355177029928895959124149358900542274921599668595",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8209950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.090170888377166,
+      "shares_net": 6.057075505999273,
+      "entry_fee_usdc_est": 0.02717114427860696,
+      "entry_fee_shares_est": 0.033095382377893584,
+      "end_date": "2026-03-09T17:15:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "74c00abc8e2942c68adb356f55c5bf84",
+      "placed_at": "2026-03-09T17:11:29.949628+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T17:12:27.108347+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.634245,
+      "gross_pnl_usdc": -1.338584,
+      "net_pnl_usdc": -1.365755,
+      "details": {
+        "ref_price": 0.8209950248756219,
+        "worst_price_cap": 0.8209950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.54,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773080100",
+      "market_question": "Bitcoin Up or Down - March 9, 2:15PM-2:30PM ET",
+      "condition_id": "0x91d5fbcb8f107f934c39db2304f12c162b676f43a5d3997f13961d6abbe54bb8",
+      "token_id": "107057043419805069854751311351412583145156184297655865591574378882287747418273",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.9,
+      "amount_usd": 5.0,
+      "shares_gross": 5.555555555555555,
+      "shares_net": 5.544444444444444,
+      "entry_fee_usdc_est": 0.01,
+      "entry_fee_shares_est": 0.011111111111111112,
+      "end_date": "2026-03-09T18:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "fb3dedd099604f1288cd242ffeef237c",
+      "placed_at": "2026-03-09T18:26:34.985016+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T18:28:50.707287+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.489,
+      "gross_pnl_usdc": 0.499,
+      "net_pnl_usdc": 0.489,
+      "details": {
+        "ref_price": 0.9,
+        "worst_price_cap": 0.9,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773081000",
+      "market_question": "Bitcoin Up or Down - March 9, 2:30PM-2:45PM ET",
+      "condition_id": "0x1960b0364cb157b52db2a1e4e0ee97f0c5b4d0b077a059982442ab937265efdf",
+      "token_id": "8221806034877355825348256455640682638645746035004763753619697189503051675118",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-09T18:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "e4443fedb7624f8aac400056011c24a5",
+      "placed_at": "2026-03-09T18:43:14.446654+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T18:44:50.197967+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.074811,
+      "gross_pnl_usdc": 1.104511,
+      "net_pnl_usdc": 1.074811,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773081900",
+      "market_question": "Bitcoin Up or Down - March 9, 2:45PM-3:00PM ET",
+      "condition_id": "0x262a6d7d62f3456767b7cdd6ad8aa653478e21672811fbff86bdf4b4a8906d5f",
+      "token_id": "44420486220073029687726625310731181096892499328368975913590519923038346032023",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 5.611703612708694,
+      "shares_net": 5.598357808922888,
+      "entry_fee_usdc_est": 0.01189104477611941,
+      "entry_fee_shares_est": 0.013345803785806028,
+      "end_date": "2026-03-09T19:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "41fb247df2a1494591442e810876358b",
+      "placed_at": "2026-03-09T18:56:39.463061+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T18:58:14.163996+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.542374,
+      "gross_pnl_usdc": 0.554265,
+      "net_pnl_usdc": 0.542374,
+      "details": {
+        "ref_price": 0.8909950248756219,
+        "worst_price_cap": 0.8909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773082800",
+      "market_question": "Bitcoin Up or Down - March 9, 3:00PM-3:15PM ET",
+      "condition_id": "0x6bfca25d5e3dbc930f80440482ab05082c6c0b176d0e5845e7b968c2966cce1d",
+      "token_id": "42234372523632343999658690793891299162960889577105405982649022395802426562765",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.91,
+      "amount_usd": 5.0,
+      "shares_gross": 5.4945054945054945,
+      "shares_net": 5.485054945054945,
+      "entry_fee_usdc_est": 0.008599999999999997,
+      "entry_fee_shares_est": 0.009450549450549446,
+      "end_date": "2026-03-09T19:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "19e3fe14973145f1ae48467cc5073335",
+      "placed_at": "2026-03-09T19:14:18.475035+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T19:14:55.743278+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.47957,
+      "gross_pnl_usdc": 0.48817,
+      "net_pnl_usdc": 0.47957,
+      "details": {
+        "ref_price": 0.91,
+        "worst_price_cap": 0.91,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.999,
+          "exit_price": 0.999,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773085500",
+      "market_question": "Bitcoin Up or Down - March 9, 3:45PM-4:00PM ET",
+      "condition_id": "0xe493d5a802678135688d85e8e303147e87f575076abecc164f79a70db02867b6",
+      "token_id": "82868050788642420639377672119840205994834245089796086510528695519448509066925",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.84,
+      "amount_usd": 5.0,
+      "shares_gross": 5.9523809523809526,
+      "shares_net": 5.925238095238095,
+      "entry_fee_usdc_est": 0.022800000000000008,
+      "entry_fee_shares_est": 0.027142857142857153,
+      "end_date": "2026-03-09T20:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "3a34f72c26d948f1ae582d6fdaad2c20",
+      "placed_at": "2026-03-09T19:58:05.412953+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T19:58:42.963771+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.154957,
+      "gross_pnl_usdc": 0.177757,
+      "net_pnl_usdc": 0.154957,
+      "details": {
+        "ref_price": 0.84,
+        "worst_price_cap": 0.84,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9209950248756219,
+        "take_profit": {
+          "trigger_price": 0.87,
+          "exit_price": 0.87,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773086400",
+      "market_question": "Bitcoin Up or Down - March 9, 4:00PM-4:15PM ET",
+      "condition_id": "0x1b7255a80911c465493dcb7484159558de467e69eced64724b9f9219e6d8d469",
+      "token_id": "40704993265274274441674117465311107118837897694943787807577422223553145043858",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-09T20:15:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "0c4f4a05662247ecac1880a3bbd2bc81",
+      "placed_at": "2026-03-09T20:14:01.037397+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T20:14:29.545475+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.681704,
+      "gross_pnl_usdc": -1.288596,
+      "net_pnl_usdc": -1.318296,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.49,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773087300",
+      "market_question": "Bitcoin Up or Down - March 9, 4:15PM-4:30PM ET",
+      "condition_id": "0x5a300c31e036a97a7a14aa248f5fb0d39c02a06803a910643f1ab2edc22fa99f",
+      "token_id": "105586622921501683577452076766131937818301607449434903131477695896241538114487",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-09T20:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "a2204711c5584f8c8dd42c2e7923b9b7",
+      "placed_at": "2026-03-09T20:28:37.481239+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T20:29:01.927693+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 4.8438,
+      "gross_pnl_usdc": -0.1242,
+      "net_pnl_usdc": -0.1562,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.78,
+          "exit_price": 0.78,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773088200",
+      "market_question": "Bitcoin Up or Down - March 9, 4:30PM-4:45PM ET",
+      "condition_id": "0xbb458a65318b5bcd72808cb2ef6b313273db54c52fde52111b2016fff7ad87cc",
+      "token_id": "6368645554088775796282770615031589550151506787563074067540396689357416280842",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-09T20:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "bebbdba2ed2e434c8fd27cf1fe9db33b",
+      "placed_at": "2026-03-09T20:41:40.097356+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T20:43:18.650975+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.221853,
+      "gross_pnl_usdc": 0.251553,
+      "net_pnl_usdc": 0.221853,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.93,
+        "take_profit": {
+          "trigger_price": 0.850995024875622,
+          "exit_price": 0.850995024875622,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773089100",
+      "market_question": "Bitcoin Up or Down - March 9, 4:45PM-5:00PM ET",
+      "condition_id": "0x0b33b08739d0f962f0f7cfe4ec6f8fbcd75e36343b82dcade6c86a022921e082",
+      "token_id": "86603313232792621796299246551008476297808859186971443414884388397926521150405",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8209950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.090170888377166,
+      "shares_net": 6.057075505999273,
+      "entry_fee_usdc_est": 0.02717114427860696,
+      "entry_fee_shares_est": 0.033095382377893584,
+      "end_date": "2026-03-09T21:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "ccf1a6534f304b9faf2a2c567acb0951",
+      "placed_at": "2026-03-09T20:56:24.222868+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T20:58:15.566869+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.996505,
+      "gross_pnl_usdc": 1.023676,
+      "net_pnl_usdc": 0.996505,
+      "details": {
+        "ref_price": 0.8209950248756219,
+        "worst_price_cap": 0.8209950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9209950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773090000",
+      "market_question": "Bitcoin Up or Down - March 9, 5:00PM-5:15PM ET",
+      "condition_id": "0x137eda65c5b489ece23d27ca0e299dde5c7612b709ae691e5fdf82238633faab",
+      "token_id": "69685053795144340137053884329823544928535284290562986319297254422673555775030",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8409950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 5.9453383814481775,
+      "shares_net": 5.918499763369616,
+      "entry_fee_usdc_est": 0.02257114427860695,
+      "entry_fee_shares_est": 0.02683861807856127,
+      "end_date": "2026-03-09T21:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "3654ba9293174475b381bbd41dc58173",
+      "placed_at": "2026-03-09T21:11:26.171966+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T21:14:40.094675+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.859315,
+      "gross_pnl_usdc": 0.881886,
+      "net_pnl_usdc": 0.859315,
+      "details": {
+        "ref_price": 0.8409950248756219,
+        "worst_price_cap": 0.8409950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773091800",
+      "market_question": "Bitcoin Up or Down - March 9, 5:30PM-5:45PM ET",
+      "condition_id": "0x31fcbb08a0406f8ecf17d12afb139ceb9fc32a784fca5a7efb79fd7043c3c05f",
+      "token_id": "24491320204883510894968963352302211178759458705870946049713624919178868759072",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-09T21:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "71cd830a36c6414696182bd2ea0fac06",
+      "placed_at": "2026-03-09T21:42:04.986046+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T21:44:05.542706+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.1479,
+      "gross_pnl_usdc": 1.1799,
+      "net_pnl_usdc": 1.1479,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.95,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773092700",
+      "market_question": "Bitcoin Up or Down - March 9, 5:45PM-6:00PM ET",
+      "condition_id": "0xef81c5bd71da2f264ba330626a483d2f630bd44d3157a4fde2e0ef12ac7c00ca",
+      "token_id": "60233750896786590851396518588124756368320006620749084677546200890443928646044",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-09T22:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "9b06ace67bb34f7e8c00ccdc008f9fb0",
+      "placed_at": "2026-03-09T21:57:35.419144+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T21:59:23.233324+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.2164,
+      "gross_pnl_usdc": 0.2484,
+      "net_pnl_usdc": 0.2164,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.84,
+          "exit_price": 0.84,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773096300",
+      "market_question": "Bitcoin Up or Down - March 9, 6:45PM-7:00PM ET",
+      "condition_id": "0xce2ef75e19c9ae66806661e47c2a27a8a68b6de0ecd1c217d387ecd78675f760",
+      "token_id": "33366334033093531270070724978471184423447185013065831426388249710571112507906",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.82,
+      "amount_usd": 5.0,
+      "shares_gross": 6.097560975609756,
+      "shares_net": 6.064146341463415,
+      "entry_fee_usdc_est": 0.027400000000000015,
+      "entry_fee_shares_est": 0.033414634146341486,
+      "end_date": "2026-03-09T23:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "fd45edf01a2240cba61417a470efdf93",
+      "placed_at": "2026-03-09T22:56:15.542711+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T22:59:38.456002+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.003505,
+      "gross_pnl_usdc": 1.030905,
+      "net_pnl_usdc": 1.003505,
+      "details": {
+        "ref_price": 0.82,
+        "worst_price_cap": 0.82,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9109950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773097200",
+      "market_question": "Bitcoin Up or Down - March 9, 7:00PM-7:15PM ET",
+      "condition_id": "0xa3be562b5f441a99bf67ee169dc893f6fc48cbefb8d3c78cff9077e176e21b20",
+      "token_id": "61316242497459933847743362040226950068098372956901295923972882714944573243246",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8009950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.24223602484472,
+      "shares_net": 6.202571428571428,
+      "entry_fee_usdc_est": 0.03177114427860697,
+      "entry_fee_shares_est": 0.039664596273291934,
+      "end_date": "2026-03-09T23:15:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "cab74edc5cbc46c1aeddd7a1a99f09bc",
+      "placed_at": "2026-03-09T23:13:08.634512+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T23:14:12.565228+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.721543,
+      "gross_pnl_usdc": -1.246686,
+      "net_pnl_usdc": -1.278457,
+      "details": {
+        "ref_price": 0.8009950248756219,
+        "worst_price_cap": 0.8009950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.5809950248756219,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773098100",
+      "market_question": "Bitcoin Up or Down - March 9, 7:15PM-7:30PM ET",
+      "condition_id": "0x20e42c21a0eb66d08e4c26a75188c9c56c810cf9a751ce611d9a49bd4f2320b4",
+      "token_id": "115379229348314233990741610145090082194784807743145988743389131581021467833569",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8009950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.24223602484472,
+      "shares_net": 6.202571428571428,
+      "entry_fee_usdc_est": 0.03177114427860697,
+      "entry_fee_shares_est": 0.039664596273291934,
+      "end_date": "2026-03-09T23:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "9e5947c50eb44971afc41dca2fc3bdfc",
+      "placed_at": "2026-03-09T23:27:15.425390+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T23:29:50.180907+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.146748,
+      "gross_pnl_usdc": 1.178519,
+      "net_pnl_usdc": 1.146748,
+      "details": {
+        "ref_price": 0.8009950248756219,
+        "worst_price_cap": 0.8009950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9109950248756219,
+        "take_profit": {
+          "trigger_price": 0.990999996675543,
+          "exit_price": 0.990999996675543,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773099000",
+      "market_question": "Bitcoin Up or Down - March 9, 7:30PM-7:45PM ET",
+      "condition_id": "0x623491edecb8409ea1d201e87474955a7de1abf605f7c2bb125a070eceb8861e",
+      "token_id": "105682409389119985325422289326525728199687152909726883260719602368815791920070",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8309950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.016883194635694,
+      "shares_net": 5.986953840627432,
+      "entry_fee_usdc_est": 0.02487114427860696,
+      "entry_fee_shares_est": 0.029929354008261983,
+      "end_date": "2026-03-09T23:45:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "576709efd2e74afbad8fc0deebc4cc7a",
+      "placed_at": "2026-03-09T23:42:47.238154+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-09T23:43:43.962101+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 4.789563,
+      "gross_pnl_usdc": -0.185566,
+      "net_pnl_usdc": -0.210437,
+      "details": {
+        "ref_price": 0.8309950248756219,
+        "worst_price_cap": 0.8309950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.94,
+        "take_profit": {
+          "trigger_price": 0.8,
+          "exit_price": 0.8,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773100800",
+      "market_question": "Bitcoin Up or Down - March 9, 8:00PM-8:15PM ET",
+      "condition_id": "0x95f297d91d7534ee4b6cdac17065ec82019610c561dee23779cd36bbe3824293",
+      "token_id": "28287560136151296494966906580276279617107643491453492677553667225880496725588",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-10T00:15:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "ba5857d597a64f3a820fc448bbc311f3",
+      "placed_at": "2026-03-10T00:13:22.743767+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T00:14:15.976693+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.726,
+      "gross_pnl_usdc": -1.242,
+      "net_pnl_usdc": -1.274,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.5709950248756219,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773103500",
+      "market_question": "Bitcoin Up or Down - March 9, 8:45PM-9:00PM ET",
+      "condition_id": "0xb55077195f1c292e1b8f7ba8f67af74d8750aa01c5c543221ffbea8ef7d3f48a",
+      "token_id": "45882828850268307180583172797591152815512476218628666940421041946866212527107",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.88,
+      "amount_usd": 5.0,
+      "shares_gross": 5.681818181818182,
+      "shares_net": 5.665681818181818,
+      "entry_fee_usdc_est": 0.014200000000000003,
+      "entry_fee_shares_est": 0.01613636363636364,
+      "end_date": "2026-03-10T01:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "83c5f8892b494e4fa523cefbd7ee4c8c",
+      "placed_at": "2026-03-10T00:56:39.255346+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T01:00:00.837656+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.660016,
+      "gross_pnl_usdc": 0.674216,
+      "net_pnl_usdc": 0.660016,
+      "details": {
+        "ref_price": 0.88,
+        "worst_price_cap": 0.88,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.92,
+        "take_profit": {
+          "trigger_price": 0.999,
+          "exit_price": 0.999,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773104400",
+      "market_question": "Bitcoin Up or Down - March 9, 9:00PM-9:15PM ET",
+      "condition_id": "0x0511be819b537329e6dbcd81ac3019534edca1c8342b8387555b93556f409d66",
+      "token_id": "7248529717841026165120391098289280945288401112865109444739751629143134126723",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.7909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.3211522737279076,
+      "shares_net": 6.280696899176049,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04045537455185861,
+      "end_date": "2026-03-10T01:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "67758d9b71764a948eb5783706727f95",
+      "placed_at": "2026-03-10T01:14:25.801628+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T01:14:49.929953+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.22417,
+      "gross_pnl_usdc": 1.25617,
+      "net_pnl_usdc": 1.22417,
+      "details": {
+        "ref_price": 0.7909950248756219,
+        "worst_price_cap": 0.7909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9209950248756219,
+        "take_profit": {
+          "trigger_price": 0.9909999399996,
+          "exit_price": 0.9909999399996,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773105300",
+      "market_question": "Bitcoin Up or Down - March 9, 9:15PM-9:30PM ET",
+      "condition_id": "0xae78def59c3e13186b1e29648a70eca7aff9c3d975d9827cc5de41c668613fa5",
+      "token_id": "111490134316551577440171382790485208282295426272396618136169297097262969312614",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8009950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.24223602484472,
+      "shares_net": 6.202571428571428,
+      "entry_fee_usdc_est": 0.03177114427860697,
+      "entry_fee_shares_est": 0.039664596273291934,
+      "end_date": "2026-03-10T01:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "e148ac4094904e2ebc82b4edcc9c52c1",
+      "placed_at": "2026-03-10T01:26:45.505194+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T01:28:59.899776+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.140546,
+      "gross_pnl_usdc": 1.172317,
+      "net_pnl_usdc": 1.140546,
+      "details": {
+        "ref_price": 0.8009950248756219,
+        "worst_price_cap": 0.8009950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9109950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773106200",
+      "market_question": "Bitcoin Up or Down - March 9, 9:30PM-9:45PM ET",
+      "condition_id": "0xee7f037e41b0930eb57716787f3d55aab27335a4dc21672ec46392ee11542fff",
+      "token_id": "57215281997091589825809125960899268231098984838888436885931892744917956921407",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-10T01:45:00Z",
+      "fees_enabled": true,
+      "status": "stopped_out",
+      "trade_id": "fefb08c1b93c4b5a999a88c10eb73a3d",
+      "placed_at": "2026-03-10T01:41:32.680151+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T01:44:24.658721+00:00",
+      "settlement_source": "paper_stop_loss",
+      "winner_outcome": null,
+      "payout_usdc": 3.726,
+      "gross_pnl_usdc": -1.242,
+      "net_pnl_usdc": -1.274,
+      "details": {
+        "ref_price": 0.8,
+        "worst_price_cap": 0.8,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "stop_loss": {
+          "trigger_price": 0.47,
+          "exit_price": 0.6,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773108000",
+      "market_question": "Bitcoin Up or Down - March 9, 10:00PM-10:15PM ET",
+      "condition_id": "0xaa21af83304ea301c2b8fed3942f621d7fd59f73652ac627600018234ed227bb",
+      "token_id": "64202895206367671297255343218168239749988973301430852445151617398367710602639",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.8909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 5.611703612708694,
+      "shares_net": 5.598357808922888,
+      "entry_fee_usdc_est": 0.01189104477611941,
+      "entry_fee_shares_est": 0.013345803785806028,
+      "end_date": "2026-03-10T02:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "b3d3dd2f1cd642aabab0fb9d368867ff",
+      "placed_at": "2026-03-10T02:11:27.790339+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T02:15:00.783223+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.547973,
+      "gross_pnl_usdc": 0.559864,
+      "net_pnl_usdc": 0.547973,
+      "details": {
+        "ref_price": 0.8909950248756219,
+        "worst_price_cap": 0.8909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.9909999991672225,
+          "exit_price": 0.9909999991672225,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773108900",
+      "market_question": "Bitcoin Up or Down - March 9, 10:15PM-10:30PM ET",
+      "condition_id": "0x4f87fbd0c631ab74c4545764482b5c93ff9912016d7ccc9405ad904d1dd9f47c",
+      "token_id": "71104947601735296463956008212896171195363376167846619813986209768221404474079",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-10T02:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "89b4ba9368c1472b9202fb7dbcfd2261",
+      "placed_at": "2026-03-10T02:28:27.260742+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T02:29:16.083750+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.080947,
+      "gross_pnl_usdc": 1.110647,
+      "net_pnl_usdc": 1.080947,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.91,
+        "take_profit": {
+          "trigger_price": 0.9909999399996,
+          "exit_price": 0.9909999399996,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773110700",
+      "market_question": "Bitcoin Up or Down - March 9, 10:45PM-11:00PM ET",
+      "condition_id": "0x8f47e08e377f0755a0e0b405a51bf6afc81cc1c231f9c4616792db1d3fe4f89f",
+      "token_id": "41834043750689372025183379137806559603164794466428973785346044678374694189273",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.7909950248756219,
+      "amount_usd": 5.0,
+      "shares_gross": 6.3211522737279076,
+      "shares_net": 6.280696899176049,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04045537455185861,
+      "end_date": "2026-03-10T03:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "ed4cf355b035478c9a8347499dfc0dc1",
+      "placed_at": "2026-03-10T02:58:06.630526+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T02:58:43.876583+00:00",
+      "settlement_source": "paper_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.275785,
+      "gross_pnl_usdc": 0.307785,
+      "net_pnl_usdc": 0.275785,
+      "details": {
+        "ref_price": 0.7909950248756219,
+        "worst_price_cap": 0.7909950248756219,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9109950248756219,
+        "take_profit": {
+          "trigger_price": 0.84,
+          "exit_price": 0.84,
+          "mode": "paper"
+        }
+      }
+    },
+    {
+      "mode": "paper",
+      "market_slug": "btc-updown-15m-1773111600",
+      "market_question": "Bitcoin Up or Down - March 9, 11:00PM-11:15PM ET",
+      "condition_id": "0xfb00028dc4bc88a7b2a44d2526cd8746665fe5cb25a2776815f9dfa050ca5b45",
+      "token_id": "1628799268784322271874269681072295498234724979776754244285723799695129421915",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.81,
+      "amount_usd": 5.0,
+      "shares_gross": 6.172839506172839,
+      "shares_net": 6.136172839506172,
+      "entry_fee_usdc_est": 0.029699999999999997,
+      "entry_fee_shares_est": 0.03666666666666666,
+      "end_date": "2026-03-10T03:15:00Z",
+      "fees_enabled": true,
+      "status": "settled",
+      "trade_id": "cf36c0be174142b6901994df2f4350d3",
+      "placed_at": "2026-03-10T03:11:26.747781+00:00",
+      "order_id": null,
+      "response_status": null,
+      "settled_at": "2026-03-10T04:29:21.547256+00:00",
+      "settlement_source": "gamma_outcome_prices",
+      "winner_outcome": "Down",
+      "payout_usdc": 6.136173,
+      "gross_pnl_usdc": 1.165873,
+      "net_pnl_usdc": 1.136173,
+      "details": {
+        "ref_price": 0.81,
+        "worst_price_cap": 0.81,
+        "simulated": true,
+        "live": false,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219
+      }
+    },
+    {
+      "mode": "live",
+      "market_slug": "btc-updown-15m-1773116100",
+      "market_question": "Bitcoin Up or Down - March 10, 12:15AM-12:30AM ET",
+      "condition_id": "0x391161402c940b3e50343351d24c91818315bca89e17ece5d22bda0076d823eb",
+      "token_id": "43551201049540592344783758910400804820683236972019773827926485891088193506110",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.82,
+      "amount_usd": 5.0,
+      "shares_gross": 6.097560975609756,
+      "shares_net": 6.064146341463415,
+      "entry_fee_usdc_est": 0.027400000000000015,
+      "entry_fee_shares_est": 0.033414634146341486,
+      "end_date": "2026-03-10T04:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "c34298f8a66142eba87935f97fbf1b2b",
+      "placed_at": "2026-03-10T04:26:14.761861+00:00",
+      "order_id": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+      "response_status": "matched",
+      "settled_at": "2026-03-10T04:29:21.197096+00:00",
+      "settlement_source": "live_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 6.003505,
+      "gross_pnl_usdc": 1.030905,
+      "net_pnl_usdc": 1.003505,
+      "details": {
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+          "takingAmount": "6.097555",
+          "makingAmount": "4.999995",
+          "status": "matched",
+          "transactionsHashes": [
+            "0xc13035af82b8d0c0cbea018c20025e0121e67978753d0bcaca2a7d97983ebf29"
+          ],
+          "success": true
+        },
+        "ref_price": 0.81,
+        "best_ask": 0.82,
+        "best_ask_size": 70.81,
+        "tick_size": "0.01",
+        "neg_risk": false,
+        "response_status": "matched",
+        "order_id": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+        "live": true,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9009950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "best_bid_size": 1411.8,
+          "response": {
+            "errorMsg": "",
+            "orderID": "0xb84900b5861ace511ed16ca14a09501b85cc5abc46551d1f84e30a62d7e4bea4",
+            "takingAmount": "5.9994",
+            "makingAmount": "6.06",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xe79a576d6228f7a37c82ef7e4df9708e8d43a0c3561642d964c7c7c4cca2eda9"
+            ],
+            "success": true
+          },
+          "mode": "live"
+        }
+      }
+    },
+    {
+      "mode": "live",
+      "market_slug": "btc-updown-15m-1773119700",
+      "market_question": "Bitcoin Up or Down - March 10, 1:15AM-1:30AM ET",
+      "condition_id": "0x656fce1dd5c0236630af3e3502a558f70f2a501e404938f6c1fb9c43d24a4d6a",
+      "token_id": "71805894789391366918592784639945837671588586741349412281534548541283644041903",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.83,
+      "amount_usd": 5.0,
+      "shares_gross": 6.024096385542169,
+      "shares_net": 5.993855421686748,
+      "entry_fee_usdc_est": 0.02510000000000001,
+      "entry_fee_shares_est": 0.0302409638554217,
+      "end_date": "2026-03-10T05:30:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "8e07e8bb0f0c41dea33d97c336aa84e3",
+      "placed_at": "2026-03-10T05:27:27.700988+00:00",
+      "order_id": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+      "response_status": "matched",
+      "settled_at": "2026-03-10T05:28:49.887964+00:00",
+      "settlement_source": "live_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.933917,
+      "gross_pnl_usdc": 0.959017,
+      "net_pnl_usdc": 0.933917,
+      "details": {
+        "response": {
+          "errorMsg": "",
+          "orderID": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+          "takingAmount": "6.024095",
+          "makingAmount": "4.999998",
+          "status": "matched",
+          "transactionsHashes": [
+            "0xb7a7f8b42cfae7d9d5130a98cdfc27ffc0310a86dd06555254684a085ed065b8"
+          ],
+          "success": true
+        },
+        "ref_price": 0.82,
+        "best_ask": 0.83,
+        "best_ask_size": 2022.43,
+        "tick_size": "0.01",
+        "neg_risk": false,
+        "response_status": "matched",
+        "order_id": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+        "live": true,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9109950248756219,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "best_bid_size": 4969.05,
+          "response": {
+            "errorMsg": "",
+            "orderID": "0x63dde20db034c4ac5c3c71ca5544996afe84cd40d0c04a12e290e42d04c58058",
+            "takingAmount": "5.9301",
+            "makingAmount": "5.99",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xf799c14090e29bac48651517af91a9542dac6b548fd30a3bb2ba0d65344ac399"
+            ],
+            "success": true
+          },
+          "mode": "live"
+        }
+      }
+    },
+    {
+      "mode": "live",
+      "market_slug": "btc-updown-15m-1773121500",
+      "market_question": "Bitcoin Up or Down - March 10, 1:45AM-2:00AM ET",
+      "condition_id": "0x700fea35c30a747e706b43dcca29e16e5433cd09bf54e29c20d8d4bbd05629e9",
+      "token_id": "105497874201664690113237234397173323274176224101821411584195384306276392041892",
+      "outcome": "Up",
+      "outcome_index": 0,
+      "entry_price": 0.8,
+      "amount_usd": 5.0,
+      "shares_gross": 6.25,
+      "shares_net": 6.21,
+      "entry_fee_usdc_est": 0.032,
+      "entry_fee_shares_est": 0.04,
+      "end_date": "2026-03-10T06:00:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "79637a28d9634188ba8d509917b46577",
+      "placed_at": "2026-03-10T05:57:26.319252+00:00",
+      "order_id": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+      "response_status": "matched",
+      "settled_at": "2026-03-10T05:58:21.436826+00:00",
+      "settlement_source": "live_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.2164,
+      "gross_pnl_usdc": 0.2484,
+      "net_pnl_usdc": 0.2164,
+      "details": {
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+          "takingAmount": "6.329109",
+          "makingAmount": "4.999996",
+          "status": "matched",
+          "transactionsHashes": [
+            "0xfef892bdf60e7ab5c99c693195d13dcc6bd20e15586eec0b3b59a3461756d451"
+          ],
+          "success": true
+        },
+        "ref_price": 0.79,
+        "best_ask": 0.8,
+        "best_ask_size": 531.52,
+        "tick_size": "0.01",
+        "neg_risk": false,
+        "response_status": "matched",
+        "order_id": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+        "live": true,
+        "stop_loss_price": 0.6,
+        "take_profit_price": 0.99,
+        "profit_protect_armed": true,
+        "profit_protect_armed_at": 0.9,
+        "take_profit": {
+          "trigger_price": 0.8409950248756219,
+          "exit_price": 0.84,
+          "best_bid_size": 178.3,
+          "response": {
+            "errorMsg": "",
+            "orderID": "0x813df40f5fec200d33aa20627a4a940ecf949cf0124433597e12ba17ae9a5218",
+            "takingAmount": "5.222399",
+            "makingAmount": "6.209998",
+            "status": "matched",
+            "transactionsHashes": [
+              "0x7b293495b560189a63dd8785b7b5114a0fbbb0b4a6a4dace42bbb3d606122ef0"
+            ],
+            "success": true
+          },
+          "mode": "live"
+        }
+      }
+    },
+    {
+      "mode": "live",
+      "market_slug": "btc-updown-15m-1773122400",
+      "market_question": "Bitcoin Up or Down - March 10, 2:00AM-2:15AM ET",
+      "condition_id": "0x8462ee453839926c3517a5dbfd1a38ea84e173cbb3b1e79f1545bc074d30ae8b",
+      "token_id": "53538284021904067910954595770549283659287507063059106789695239289016270162101",
+      "outcome": "Down",
+      "outcome_index": 1,
+      "entry_price": 0.91,
+      "amount_usd": 5.0,
+      "shares_gross": 5.4945054945054945,
+      "shares_net": 5.485054945054945,
+      "entry_fee_usdc_est": 0.008599999999999997,
+      "entry_fee_shares_est": 0.009450549450549446,
+      "end_date": "2026-03-10T06:15:00Z",
+      "fees_enabled": true,
+      "status": "take_profit",
+      "trade_id": "3a452cef6dfd487081d7d125ba1dca95",
+      "placed_at": "2026-03-10T06:11:13.076958+00:00",
+      "order_id": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+      "response_status": "matched",
+      "settled_at": "2026-03-10T06:13:25.897846+00:00",
+      "settlement_source": "live_take_profit",
+      "winner_outcome": null,
+      "payout_usdc": 5.430204,
+      "gross_pnl_usdc": 0.438804,
+      "net_pnl_usdc": 0.430204,
+      "details": {
+        "response": {
+          "errorMsg": "",
+          "orderID": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+          "takingAmount": "5.500509",
+          "makingAmount": "4.99999",
+          "status": "matched",
+          "transactionsHashes": [
+            "0x2e6d06ca031c0cf1e47fb3d3077ac8ba868ed6db7a87f69dcaef80d703e45907"
+          ],
+          "success": true
+        },
+        "ref_price": 0.9,
+        "best_ask": 0.91,
+        "best_ask_size": 72.09,
+        "tick_size": "0.01",
+        "neg_risk": false,
+        "response_status": "matched",
+        "order_id": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+        "live": true,
+        "stop_loss_price": 0.75,
+        "take_profit_price": 0.99,
+        "take_profit": {
+          "trigger_price": 0.99,
+          "exit_price": 0.99,
+          "best_bid_size": 20.0,
+          "response": {
+            "errorMsg": "",
+            "orderID": "0x81e3ef43edf08235bf8fdf778829f52449a6a951c8ffc70b22e80c9a7b3dc10d",
+            "takingAmount": "5.4252",
+            "makingAmount": "5.48",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xc8d0f9f38138310947b5b4d6ba570ed5c5c23047fa32087f99f2b018e447ca26"
+            ],
+            "success": true
+          },
+          "mode": "live"
+        }
+      }
+    }
+  ],
+  "notes": [
+    {
+      "timestamp": "2026-03-09T10:13:25.735898+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773050400",
+        "result": "simulated",
+        "trade_id": "dc811dbab07f43e6b9f3a7eb1875277d",
+        "details": {
+          "ref_price": 0.79,
+          "worst_price_cap": 0.79,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:13:37.295576+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773050400",
+        "result": "take_profit",
+        "trade_id": "dc811dbab07f43e6b9f3a7eb1875277d",
+        "details": {
+          "settled_at": "2026-03-09T10:13:37.294945+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.219544,
+          "gross_pnl_usdc": 0.251544,
+          "net_pnl_usdc": 0.219544,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.79,
+            "worst_price_cap": 0.79,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.93,
+            "take_profit": {
+              "trigger_price": 0.83,
+              "exit_price": 0.83,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:28:32.535903+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773051300",
+        "result": "simulated",
+        "trade_id": "cd64279d5bf94c25a4a0707ddaa3ef7e",
+        "details": {
+          "ref_price": 0.7909950248756219,
+          "worst_price_cap": 0.7909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:29:14.946566+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773051300",
+        "result": "take_profit",
+        "trade_id": "cd64279d5bf94c25a4a0707ddaa3ef7e",
+        "details": {
+          "settled_at": "2026-03-09T10:29:14.944656+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.21789,
+          "gross_pnl_usdc": 1.24989,
+          "net_pnl_usdc": 1.21789,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.7909950248756219,
+            "worst_price_cap": 0.7909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.96,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:41:30.876089+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773052200",
+        "result": "simulated",
+        "trade_id": "cf9ba0ffb61245cc912f66ae8aa7c5f1",
+        "details": {
+          "ref_price": 0.850995024875622,
+          "worst_price_cap": 0.850995024875622,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:43:11.465973+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773052200",
+        "result": "take_profit",
+        "trade_id": "cf9ba0ffb61245cc912f66ae8aa7c5f1",
+        "details": {
+          "settled_at": "2026-03-09T10:43:11.463595+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.793115,
+          "gross_pnl_usdc": 0.813406,
+          "net_pnl_usdc": 0.793115,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.850995024875622,
+            "worst_price_cap": 0.850995024875622,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:56:07.842363+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773053100",
+        "result": "simulated",
+        "trade_id": "de3cdd5499564c2a82c7ee2c9a07d928",
+        "details": {
+          "ref_price": 0.84,
+          "worst_price_cap": 0.84,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T10:58:07.605844+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773053100",
+        "result": "take_profit",
+        "trade_id": "de3cdd5499564c2a82c7ee2c9a07d928",
+        "details": {
+          "settled_at": "2026-03-09T10:58:07.602706+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.154957,
+          "gross_pnl_usdc": 0.177757,
+          "net_pnl_usdc": 0.154957,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.84,
+            "worst_price_cap": 0.84,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.87,
+              "exit_price": 0.87,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T11:12:28.885902+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773054000",
+        "result": "simulated",
+        "trade_id": "56ac40748d0e439a8c0f09e1d1f1980a",
+        "details": {
+          "ref_price": 0.8009950248756219,
+          "worst_price_cap": 0.8009950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T11:14:26.045471+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773054000",
+        "result": "take_profit",
+        "trade_id": "56ac40748d0e439a8c0f09e1d1f1980a",
+        "details": {
+          "settled_at": "2026-03-09T11:14:26.043398+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.140546,
+          "gross_pnl_usdc": 1.172317,
+          "net_pnl_usdc": 1.140546,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8009950248756219,
+            "worst_price_cap": 0.8009950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.93,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T11:41:36.452409+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773055800",
+        "result": "simulated",
+        "trade_id": "413cd8477c4f4fd3bfb4b49256e93f5f",
+        "details": {
+          "ref_price": 0.8309950248756219,
+          "worst_price_cap": 0.8309950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T11:43:18.012090+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773055800",
+        "result": "take_profit",
+        "trade_id": "413cd8477c4f4fd3bfb4b49256e93f5f",
+        "details": {
+          "settled_at": "2026-03-09T11:43:18.010282+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.927084,
+          "gross_pnl_usdc": 0.951955,
+          "net_pnl_usdc": 0.927084,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8309950248756219,
+            "worst_price_cap": 0.8309950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:11:36.612927+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773057600",
+        "result": "simulated",
+        "trade_id": "d6775ee939fb41e6bd79b5417e817d99",
+        "details": {
+          "ref_price": 0.83,
+          "worst_price_cap": 0.83,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:13:57.470795+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773057600",
+        "result": "take_profit",
+        "trade_id": "d6775ee939fb41e6bd79b5417e817d99",
+        "details": {
+          "settled_at": "2026-03-09T12:13:57.468777+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.933917,
+          "gross_pnl_usdc": 0.959017,
+          "net_pnl_usdc": 0.933917,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.83,
+            "worst_price_cap": 0.83,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.94,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:42:40.066962+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773059400",
+        "result": "simulated",
+        "trade_id": "074fdf0a59544ffb908099fcffd6be4e",
+        "details": {
+          "ref_price": 0.9,
+          "worst_price_cap": 0.9,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:43:42.445816+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773059400",
+        "result": "stopped_out",
+        "trade_id": "074fdf0a59544ffb908099fcffd6be4e",
+        "details": {
+          "settled_at": "2026-03-09T12:43:42.443206+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.326667,
+          "gross_pnl_usdc": -1.663333,
+          "net_pnl_usdc": -1.673333,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.9,
+            "worst_price_cap": 0.9,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.48,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:57:23.256985+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773060300",
+        "result": "simulated",
+        "trade_id": "408e65c5f3054d34a20b88acce79e1c4",
+        "details": {
+          "ref_price": 0.83,
+          "worst_price_cap": 0.83,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T12:58:06.591735+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773060300",
+        "result": "stopped_out",
+        "trade_id": "408e65c5f3054d34a20b88acce79e1c4",
+        "details": {
+          "settled_at": "2026-03-09T12:58:06.586855+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.596313,
+          "gross_pnl_usdc": -1.378587,
+          "net_pnl_usdc": -1.403687,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.83,
+            "worst_price_cap": 0.83,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.5309950248756219,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T13:26:44.711492+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773062100",
+        "result": "simulated",
+        "trade_id": "2803e47488c845b58de71788d52d0c39",
+        "details": {
+          "ref_price": 0.911,
+          "worst_price_cap": 0.911,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T13:28:42.980131+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773062100",
+        "result": "take_profit",
+        "trade_id": "2803e47488c845b58de71788d52d0c39",
+        "details": {
+          "settled_at": "2026-03-09T13:28:42.976768+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.424396,
+          "gross_pnl_usdc": 0.432856,
+          "net_pnl_usdc": 0.424396,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.911,
+            "worst_price_cap": 0.911,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T13:42:43.237699+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773063000",
+        "result": "simulated",
+        "trade_id": "43f6942f63c5480e83a454e30309cea9",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T13:43:42.501027+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773063000",
+        "result": "take_profit",
+        "trade_id": "43f6942f63c5480e83a454e30309cea9",
+        "details": {
+          "settled_at": "2026-03-09T13:43:42.498139+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.074811,
+          "gross_pnl_usdc": 1.104511,
+          "net_pnl_usdc": 1.074811,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9209950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T14:42:08.026893+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773066600",
+        "result": "simulated",
+        "trade_id": "5c3ad6ad2f004c73a8bd99b11a42cee5",
+        "details": {
+          "ref_price": 0.86,
+          "worst_price_cap": 0.86,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T14:43:33.136093+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773066600",
+        "result": "take_profit",
+        "trade_id": "5c3ad6ad2f004c73a8bd99b11a42cee5",
+        "details": {
+          "settled_at": "2026-03-09T14:43:33.133434+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.734633,
+          "gross_pnl_usdc": 0.753033,
+          "net_pnl_usdc": 0.734633,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.86,
+            "worst_price_cap": 0.86,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9209950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T15:11:37.064140+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773068400",
+        "result": "simulated",
+        "trade_id": "a6307ed19b494c4ea186ce6f7ac392a2",
+        "details": {
+          "ref_price": 0.7909950248756219,
+          "worst_price_cap": 0.7909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T15:12:31.697699+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773068400",
+        "result": "stopped_out",
+        "trade_id": "a6307ed19b494c4ea186ce6f7ac392a2",
+        "details": {
+          "settled_at": "2026-03-09T15:12:31.688467+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.768418,
+          "gross_pnl_usdc": -1.199582,
+          "net_pnl_usdc": -1.231582,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.7909950248756219,
+            "worst_price_cap": 0.7909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.59,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T15:27:49.062359+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773069300",
+        "result": "simulated",
+        "trade_id": "bf550b299cfb4ee39ed86a9605a70da8",
+        "details": {
+          "ref_price": 0.82,
+          "worst_price_cap": 0.82,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T15:29:33.946200+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773069300",
+        "result": "take_profit",
+        "trade_id": "bf550b299cfb4ee39ed86a9605a70da8",
+        "details": {
+          "settled_at": "2026-03-09T15:29:33.942213+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.009569,
+          "gross_pnl_usdc": 1.036969,
+          "net_pnl_usdc": 1.009569,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.82,
+            "worst_price_cap": 0.82,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9409950248756219,
+            "take_profit": {
+              "trigger_price": 0.9909999801944901,
+              "exit_price": 0.9909999801944901,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:11:16.898713+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773072000",
+        "result": "simulated",
+        "trade_id": "8fa92cbb5adf4adea0192336e889aa63",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:12:19.069403+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773072000",
+        "result": "take_profit",
+        "trade_id": "8fa92cbb5adf4adea0192336e889aa63",
+        "details": {
+          "settled_at": "2026-03-09T16:12:19.065938+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.33847,
+          "gross_pnl_usdc": 0.36817,
+          "net_pnl_usdc": 0.33847,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.87,
+              "exit_price": 0.87,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:26:34.978287+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773072900",
+        "result": "simulated",
+        "trade_id": "fb7820af1614450fa69e468d69e1fa9f",
+        "details": {
+          "ref_price": 0.91,
+          "worst_price_cap": 0.91,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:28:16.409080+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773072900",
+        "result": "take_profit",
+        "trade_id": "fb7820af1614450fa69e468d69e1fa9f",
+        "details": {
+          "settled_at": "2026-03-09T16:28:16.404982+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.430204,
+          "gross_pnl_usdc": 0.438804,
+          "net_pnl_usdc": 0.430204,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.91,
+            "worst_price_cap": 0.91,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:36:15.524955+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773078300 (Caused by NewConnectionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to establish a new connection: [Errno 65] No route to host\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:36:39.121867+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773072900 (Caused by NewConnectionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to establish a new connection: [Errno 65] No route to host\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:37:07.694743+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773072900 (Caused by ConnectTimeoutError(<HTTPSConnection(host='gamma-api.polymarket.com', port=443) at 0x10589b650>, 'Connection to gamma-api.polymarket.com timed out. (connect timeout=20)'))\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:37:25.577821+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773072900 (Caused by NewConnectionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to establish a new connection: [Errno 51] Network is unreachable\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:38:00.685396+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773072900 (Caused by NameResolutionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to resolve \\'gamma-api.polymarket.com\\' ([Errno 8] nodename nor servname provided, or not known)\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:38:14.654630+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773072900 (Caused by NameResolutionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to resolve \\'gamma-api.polymarket.com\\' ([Errno 8] nodename nor servname provided, or not known)\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:42:15.012486+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773073800",
+        "result": "simulated",
+        "trade_id": "93024c692d0f42d384c7597b31d97f96",
+        "details": {
+          "ref_price": 0.8009950248756219,
+          "worst_price_cap": 0.8009950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:43:57.926962+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773073800",
+        "result": "take_profit",
+        "trade_id": "93024c692d0f42d384c7597b31d97f96",
+        "details": {
+          "settled_at": "2026-03-09T16:43:57.922210+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.140546,
+          "gross_pnl_usdc": 1.172317,
+          "net_pnl_usdc": 1.140546,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8009950248756219,
+            "worst_price_cap": 0.8009950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:56:48.689210+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773074700",
+        "result": "simulated",
+        "trade_id": "380f1395161b469cb2b1525b5fc878db",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T16:59:02.815199+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773074700",
+        "result": "take_profit",
+        "trade_id": "380f1395161b469cb2b1525b5fc878db",
+        "details": {
+          "settled_at": "2026-03-09T16:59:02.810824+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.1479,
+          "gross_pnl_usdc": 1.1799,
+          "net_pnl_usdc": 1.1479,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T17:11:29.953848+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773075600",
+        "result": "simulated",
+        "trade_id": "74c00abc8e2942c68adb356f55c5bf84",
+        "details": {
+          "ref_price": 0.8209950248756219,
+          "worst_price_cap": 0.8209950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T17:12:27.115844+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773075600",
+        "result": "stopped_out",
+        "trade_id": "74c00abc8e2942c68adb356f55c5bf84",
+        "details": {
+          "settled_at": "2026-03-09T17:12:27.108347+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.634245,
+          "gross_pnl_usdc": -1.338584,
+          "net_pnl_usdc": -1.365755,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.8209950248756219,
+            "worst_price_cap": 0.8209950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.54,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:26:34.989921+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773080100",
+        "result": "simulated",
+        "trade_id": "fb3dedd099604f1288cd242ffeef237c",
+        "details": {
+          "ref_price": 0.9,
+          "worst_price_cap": 0.9,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:28:50.712081+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773080100",
+        "result": "take_profit",
+        "trade_id": "fb3dedd099604f1288cd242ffeef237c",
+        "details": {
+          "settled_at": "2026-03-09T18:28:50.707287+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.489,
+          "gross_pnl_usdc": 0.499,
+          "net_pnl_usdc": 0.489,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.9,
+            "worst_price_cap": 0.9,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:43:14.451604+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773081000",
+        "result": "simulated",
+        "trade_id": "e4443fedb7624f8aac400056011c24a5",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:44:50.202230+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773081000",
+        "result": "take_profit",
+        "trade_id": "e4443fedb7624f8aac400056011c24a5",
+        "details": {
+          "settled_at": "2026-03-09T18:44:50.197967+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.074811,
+          "gross_pnl_usdc": 1.104511,
+          "net_pnl_usdc": 1.074811,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:56:39.467456+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773081900",
+        "result": "simulated",
+        "trade_id": "41fb247df2a1494591442e810876358b",
+        "details": {
+          "ref_price": 0.8909950248756219,
+          "worst_price_cap": 0.8909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T18:58:14.170194+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773081900",
+        "result": "take_profit",
+        "trade_id": "41fb247df2a1494591442e810876358b",
+        "details": {
+          "settled_at": "2026-03-09T18:58:14.163996+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.542374,
+          "gross_pnl_usdc": 0.554265,
+          "net_pnl_usdc": 0.542374,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8909950248756219,
+            "worst_price_cap": 0.8909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T19:14:18.479722+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773082800",
+        "result": "simulated",
+        "trade_id": "19e3fe14973145f1ae48467cc5073335",
+        "details": {
+          "ref_price": 0.91,
+          "worst_price_cap": 0.91,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T19:14:55.747687+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773082800",
+        "result": "take_profit",
+        "trade_id": "19e3fe14973145f1ae48467cc5073335",
+        "details": {
+          "settled_at": "2026-03-09T19:14:55.743278+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.47957,
+          "gross_pnl_usdc": 0.48817,
+          "net_pnl_usdc": 0.47957,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.91,
+            "worst_price_cap": 0.91,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.999,
+              "exit_price": 0.999,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T19:58:05.418679+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773085500",
+        "result": "simulated",
+        "trade_id": "3a34f72c26d948f1ae582d6fdaad2c20",
+        "details": {
+          "ref_price": 0.84,
+          "worst_price_cap": 0.84,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T19:58:42.967875+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773085500",
+        "result": "take_profit",
+        "trade_id": "3a34f72c26d948f1ae582d6fdaad2c20",
+        "details": {
+          "settled_at": "2026-03-09T19:58:42.963771+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.154957,
+          "gross_pnl_usdc": 0.177757,
+          "net_pnl_usdc": 0.154957,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.84,
+            "worst_price_cap": 0.84,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9209950248756219,
+            "take_profit": {
+              "trigger_price": 0.87,
+              "exit_price": 0.87,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:14:01.042272+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773086400",
+        "result": "simulated",
+        "trade_id": "0c4f4a05662247ecac1880a3bbd2bc81",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:14:29.549649+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773086400",
+        "result": "stopped_out",
+        "trade_id": "0c4f4a05662247ecac1880a3bbd2bc81",
+        "details": {
+          "settled_at": "2026-03-09T20:14:29.545475+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.681704,
+          "gross_pnl_usdc": -1.288596,
+          "net_pnl_usdc": -1.318296,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.49,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:28:37.487237+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773087300",
+        "result": "simulated",
+        "trade_id": "a2204711c5584f8c8dd42c2e7923b9b7",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:29:01.932106+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773087300",
+        "result": "take_profit",
+        "trade_id": "a2204711c5584f8c8dd42c2e7923b9b7",
+        "details": {
+          "settled_at": "2026-03-09T20:29:01.927693+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 4.8438,
+          "gross_pnl_usdc": -0.1242,
+          "net_pnl_usdc": -0.1562,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.78,
+              "exit_price": 0.78,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:41:40.102114+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773088200",
+        "result": "simulated",
+        "trade_id": "bebbdba2ed2e434c8fd27cf1fe9db33b",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:43:18.655526+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773088200",
+        "result": "take_profit",
+        "trade_id": "bebbdba2ed2e434c8fd27cf1fe9db33b",
+        "details": {
+          "settled_at": "2026-03-09T20:43:18.650975+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.221853,
+          "gross_pnl_usdc": 0.251553,
+          "net_pnl_usdc": 0.221853,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.93,
+            "take_profit": {
+              "trigger_price": 0.850995024875622,
+              "exit_price": 0.850995024875622,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:56:24.227500+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773089100",
+        "result": "simulated",
+        "trade_id": "ccf1a6534f304b9faf2a2c567acb0951",
+        "details": {
+          "ref_price": 0.8209950248756219,
+          "worst_price_cap": 0.8209950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T20:58:15.573770+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773089100",
+        "result": "take_profit",
+        "trade_id": "ccf1a6534f304b9faf2a2c567acb0951",
+        "details": {
+          "settled_at": "2026-03-09T20:58:15.566869+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.996505,
+          "gross_pnl_usdc": 1.023676,
+          "net_pnl_usdc": 0.996505,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8209950248756219,
+            "worst_price_cap": 0.8209950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9209950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:11:26.176909+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773090000",
+        "result": "simulated",
+        "trade_id": "3654ba9293174475b381bbd41dc58173",
+        "details": {
+          "ref_price": 0.8409950248756219,
+          "worst_price_cap": 0.8409950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:14:40.099508+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773090000",
+        "result": "take_profit",
+        "trade_id": "3654ba9293174475b381bbd41dc58173",
+        "details": {
+          "settled_at": "2026-03-09T21:14:40.094675+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.859315,
+          "gross_pnl_usdc": 0.881886,
+          "net_pnl_usdc": 0.859315,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8409950248756219,
+            "worst_price_cap": 0.8409950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:42:04.991562+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773091800",
+        "result": "simulated",
+        "trade_id": "71cd830a36c6414696182bd2ea0fac06",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:44:05.548732+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773091800",
+        "result": "take_profit",
+        "trade_id": "71cd830a36c6414696182bd2ea0fac06",
+        "details": {
+          "settled_at": "2026-03-09T21:44:05.542706+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.1479,
+          "gross_pnl_usdc": 1.1799,
+          "net_pnl_usdc": 1.1479,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.95,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:57:35.424950+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773092700",
+        "result": "simulated",
+        "trade_id": "9b06ace67bb34f7e8c00ccdc008f9fb0",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T21:59:23.238355+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773092700",
+        "result": "take_profit",
+        "trade_id": "9b06ace67bb34f7e8c00ccdc008f9fb0",
+        "details": {
+          "settled_at": "2026-03-09T21:59:23.233324+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.2164,
+          "gross_pnl_usdc": 0.2484,
+          "net_pnl_usdc": 0.2164,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.84,
+              "exit_price": 0.84,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:19:07.899314+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(ReadTimeoutError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Read timed out.\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:20:12.033079+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Read timed out. (read timeout=20)\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:20:36.207881+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773093600 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:21:42.325251+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Read timed out. (read timeout=20)\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:22:27.359128+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gamma-api.polymarket.com\\', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773093600 (Caused by NewConnectionError(\"HTTPSConnection(host=\\'gamma-api.polymarket.com\\', port=443): Failed to establish a new connection: [Errno 65] No route to host\"))'))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:23:17.421422+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773093600 (Caused by ConnectTimeoutError(<HTTPSConnection(host='gamma-api.polymarket.com', port=443) at 0x1055c4c80>, 'Connection to gamma-api.polymarket.com timed out. (connect timeout=20)'))\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:24:07.475162+00:00",
+      "note": "loop_error",
+      "extra": {
+        "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='gamma-api.polymarket.com', port=443): Max retries exceeded with url: /markets?slug=btc-updown-15m-1773093600 (Caused by ConnectTimeoutError(<HTTPSConnection(host='gamma-api.polymarket.com', port=443) at 0x1058f0b90>, 'Connection to gamma-api.polymarket.com timed out. (connect timeout=20)'))\"))"
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:56:15.552001+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773096300",
+        "result": "simulated",
+        "trade_id": "fd45edf01a2240cba61417a470efdf93",
+        "details": {
+          "ref_price": 0.82,
+          "worst_price_cap": 0.82,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T22:59:38.462478+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773096300",
+        "result": "take_profit",
+        "trade_id": "fd45edf01a2240cba61417a470efdf93",
+        "details": {
+          "settled_at": "2026-03-09T22:59:38.456002+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.003505,
+          "gross_pnl_usdc": 1.030905,
+          "net_pnl_usdc": 1.003505,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.82,
+            "worst_price_cap": 0.82,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9109950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:13:08.640470+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773097200",
+        "result": "simulated",
+        "trade_id": "cab74edc5cbc46c1aeddd7a1a99f09bc",
+        "details": {
+          "ref_price": 0.8009950248756219,
+          "worst_price_cap": 0.8009950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:14:12.578253+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773097200",
+        "result": "stopped_out",
+        "trade_id": "cab74edc5cbc46c1aeddd7a1a99f09bc",
+        "details": {
+          "settled_at": "2026-03-09T23:14:12.565228+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.721543,
+          "gross_pnl_usdc": -1.246686,
+          "net_pnl_usdc": -1.278457,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.8009950248756219,
+            "worst_price_cap": 0.8009950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.5809950248756219,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:27:15.431400+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773098100",
+        "result": "simulated",
+        "trade_id": "9e5947c50eb44971afc41dca2fc3bdfc",
+        "details": {
+          "ref_price": 0.8009950248756219,
+          "worst_price_cap": 0.8009950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:29:50.186398+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773098100",
+        "result": "take_profit",
+        "trade_id": "9e5947c50eb44971afc41dca2fc3bdfc",
+        "details": {
+          "settled_at": "2026-03-09T23:29:50.180907+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.146748,
+          "gross_pnl_usdc": 1.178519,
+          "net_pnl_usdc": 1.146748,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8009950248756219,
+            "worst_price_cap": 0.8009950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9109950248756219,
+            "take_profit": {
+              "trigger_price": 0.990999996675543,
+              "exit_price": 0.990999996675543,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:42:47.244947+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773099000",
+        "result": "simulated",
+        "trade_id": "576709efd2e74afbad8fc0deebc4cc7a",
+        "details": {
+          "ref_price": 0.8309950248756219,
+          "worst_price_cap": 0.8309950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-09T23:43:43.968802+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773099000",
+        "result": "take_profit",
+        "trade_id": "576709efd2e74afbad8fc0deebc4cc7a",
+        "details": {
+          "settled_at": "2026-03-09T23:43:43.962101+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 4.789563,
+          "gross_pnl_usdc": -0.185566,
+          "net_pnl_usdc": -0.210437,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8309950248756219,
+            "worst_price_cap": 0.8309950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.94,
+            "take_profit": {
+              "trigger_price": 0.8,
+              "exit_price": 0.8,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T00:13:22.749181+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773100800",
+        "result": "simulated",
+        "trade_id": "ba5857d597a64f3a820fc448bbc311f3",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T00:14:15.995942+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773100800",
+        "result": "stopped_out",
+        "trade_id": "ba5857d597a64f3a820fc448bbc311f3",
+        "details": {
+          "settled_at": "2026-03-10T00:14:15.976693+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.726,
+          "gross_pnl_usdc": -1.242,
+          "net_pnl_usdc": -1.274,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.5709950248756219,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T00:56:39.261510+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773103500",
+        "result": "simulated",
+        "trade_id": "83c5f8892b494e4fa523cefbd7ee4c8c",
+        "details": {
+          "ref_price": 0.88,
+          "worst_price_cap": 0.88,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:00:00.851804+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773103500",
+        "result": "take_profit",
+        "trade_id": "83c5f8892b494e4fa523cefbd7ee4c8c",
+        "details": {
+          "settled_at": "2026-03-10T01:00:00.837656+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.660016,
+          "gross_pnl_usdc": 0.674216,
+          "net_pnl_usdc": 0.660016,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.88,
+            "worst_price_cap": 0.88,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.92,
+            "take_profit": {
+              "trigger_price": 0.999,
+              "exit_price": 0.999,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:14:25.808619+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773104400",
+        "result": "simulated",
+        "trade_id": "67758d9b71764a948eb5783706727f95",
+        "details": {
+          "ref_price": 0.7909950248756219,
+          "worst_price_cap": 0.7909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:14:49.935374+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773104400",
+        "result": "take_profit",
+        "trade_id": "67758d9b71764a948eb5783706727f95",
+        "details": {
+          "settled_at": "2026-03-10T01:14:49.929953+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.22417,
+          "gross_pnl_usdc": 1.25617,
+          "net_pnl_usdc": 1.22417,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.7909950248756219,
+            "worst_price_cap": 0.7909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9209950248756219,
+            "take_profit": {
+              "trigger_price": 0.9909999399996,
+              "exit_price": 0.9909999399996,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:26:45.520151+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773105300",
+        "result": "simulated",
+        "trade_id": "e148ac4094904e2ebc82b4edcc9c52c1",
+        "details": {
+          "ref_price": 0.8009950248756219,
+          "worst_price_cap": 0.8009950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:28:59.905158+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773105300",
+        "result": "take_profit",
+        "trade_id": "e148ac4094904e2ebc82b4edcc9c52c1",
+        "details": {
+          "settled_at": "2026-03-10T01:28:59.899776+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.140546,
+          "gross_pnl_usdc": 1.172317,
+          "net_pnl_usdc": 1.140546,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8009950248756219,
+            "worst_price_cap": 0.8009950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9109950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:41:32.686237+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773106200",
+        "result": "simulated",
+        "trade_id": "fefb08c1b93c4b5a999a88c10eb73a3d",
+        "details": {
+          "ref_price": 0.8,
+          "worst_price_cap": 0.8,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T01:44:24.675329+00:00",
+      "note": "stop_loss_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773106200",
+        "result": "stopped_out",
+        "trade_id": "fefb08c1b93c4b5a999a88c10eb73a3d",
+        "details": {
+          "settled_at": "2026-03-10T01:44:24.658721+00:00",
+          "settlement_source": "paper_stop_loss",
+          "payout_usdc": 3.726,
+          "gross_pnl_usdc": -1.242,
+          "net_pnl_usdc": -1.274,
+          "status": "stopped_out",
+          "details": {
+            "ref_price": 0.8,
+            "worst_price_cap": 0.8,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "stop_loss": {
+              "trigger_price": 0.47,
+              "exit_price": 0.6,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:11:27.796631+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773108000",
+        "result": "simulated",
+        "trade_id": "b3d3dd2f1cd642aabab0fb9d368867ff",
+        "details": {
+          "ref_price": 0.8909950248756219,
+          "worst_price_cap": 0.8909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:15:00.797652+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773108000",
+        "result": "take_profit",
+        "trade_id": "b3d3dd2f1cd642aabab0fb9d368867ff",
+        "details": {
+          "settled_at": "2026-03-10T02:15:00.783223+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.547973,
+          "gross_pnl_usdc": 0.559864,
+          "net_pnl_usdc": 0.547973,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.8909950248756219,
+            "worst_price_cap": 0.8909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.9909999991672225,
+              "exit_price": 0.9909999991672225,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:28:27.269408+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773108900",
+        "result": "simulated",
+        "trade_id": "89b4ba9368c1472b9202fb7dbcfd2261",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:29:16.089251+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773108900",
+        "result": "take_profit",
+        "trade_id": "89b4ba9368c1472b9202fb7dbcfd2261",
+        "details": {
+          "settled_at": "2026-03-10T02:29:16.083750+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 6.080947,
+          "gross_pnl_usdc": 1.110647,
+          "net_pnl_usdc": 1.080947,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.81,
+            "worst_price_cap": 0.81,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.91,
+            "take_profit": {
+              "trigger_price": 0.9909999399996,
+              "exit_price": 0.9909999399996,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:58:06.636687+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773110700",
+        "result": "simulated",
+        "trade_id": "ed4cf355b035478c9a8347499dfc0dc1",
+        "details": {
+          "ref_price": 0.7909950248756219,
+          "worst_price_cap": 0.7909950248756219,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T02:58:43.882450+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773110700",
+        "result": "take_profit",
+        "trade_id": "ed4cf355b035478c9a8347499dfc0dc1",
+        "details": {
+          "settled_at": "2026-03-10T02:58:43.876583+00:00",
+          "settlement_source": "paper_take_profit",
+          "payout_usdc": 5.275785,
+          "gross_pnl_usdc": 0.307785,
+          "net_pnl_usdc": 0.275785,
+          "status": "take_profit",
+          "details": {
+            "ref_price": 0.7909950248756219,
+            "worst_price_cap": 0.7909950248756219,
+            "simulated": true,
+            "live": false,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9109950248756219,
+            "take_profit": {
+              "trigger_price": 0.84,
+              "exit_price": 0.84,
+              "mode": "paper"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T03:11:26.753560+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773111600",
+        "result": "simulated",
+        "trade_id": "cf36c0be174142b6901994df2f4350d3",
+        "details": {
+          "ref_price": 0.81,
+          "worst_price_cap": 0.81,
+          "simulated": true,
+          "live": false,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T04:26:14.776411+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773116100",
+        "result": "submitted",
+        "trade_id": "c34298f8a66142eba87935f97fbf1b2b",
+        "details": {
+          "response": {
+            "errorMsg": "",
+            "orderID": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+            "takingAmount": "6.097555",
+            "makingAmount": "4.999995",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xc13035af82b8d0c0cbea018c20025e0121e67978753d0bcaca2a7d97983ebf29"
+            ],
+            "success": true
+          },
+          "ref_price": 0.81,
+          "best_ask": 0.82,
+          "best_ask_size": 70.81,
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "response_status": "matched",
+          "order_id": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+          "live": true,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T04:29:21.216985+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773116100",
+        "result": "take_profit",
+        "trade_id": "c34298f8a66142eba87935f97fbf1b2b",
+        "details": {
+          "settled_at": "2026-03-10T04:29:21.197096+00:00",
+          "settlement_source": "live_take_profit",
+          "payout_usdc": 6.003505,
+          "gross_pnl_usdc": 1.030905,
+          "net_pnl_usdc": 1.003505,
+          "status": "take_profit",
+          "details": {
+            "response": {
+              "errorMsg": "",
+              "orderID": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+              "takingAmount": "6.097555",
+              "makingAmount": "4.999995",
+              "status": "matched",
+              "transactionsHashes": [
+                "0xc13035af82b8d0c0cbea018c20025e0121e67978753d0bcaca2a7d97983ebf29"
+              ],
+              "success": true
+            },
+            "ref_price": 0.81,
+            "best_ask": 0.82,
+            "best_ask_size": 70.81,
+            "tick_size": "0.01",
+            "neg_risk": false,
+            "response_status": "matched",
+            "order_id": "0xcd80ad96e55ff508317d0075fae7d4510082c94d3c96952e0e6ac8a4fa91cce3",
+            "live": true,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9009950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "best_bid_size": 1411.8,
+              "response": {
+                "errorMsg": "",
+                "orderID": "0xb84900b5861ace511ed16ca14a09501b85cc5abc46551d1f84e30a62d7e4bea4",
+                "takingAmount": "5.9994",
+                "makingAmount": "6.06",
+                "status": "matched",
+                "transactionsHashes": [
+                  "0xe79a576d6228f7a37c82ef7e4df9708e8d43a0c3561642d964c7c7c4cca2eda9"
+                ],
+                "success": true
+              },
+              "mode": "live"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T04:56:36.660846+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773117900",
+        "result": "ask_above_worst_price_cap",
+        "trade_id": null,
+        "details": {
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "best_ask": 0.93,
+          "best_ask_size": 428.93,
+          "book_summary": {
+            "market": "0x34e30aabc84b1e9d512ecc0c8de854aaf86c4ad4484430753c8d7d909dd2686a",
+            "asset_id": "31112956190111611876477348659636671228719039827243949247495600801679586038725",
+            "tick_size": "0.01",
+            "min_order_size": "5"
+          },
+          "ref_price": 0.91
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T05:27:27.722396+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773119700",
+        "result": "submitted",
+        "trade_id": "8e07e8bb0f0c41dea33d97c336aa84e3",
+        "details": {
+          "response": {
+            "errorMsg": "",
+            "orderID": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+            "takingAmount": "6.024095",
+            "makingAmount": "4.999998",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xb7a7f8b42cfae7d9d5130a98cdfc27ffc0310a86dd06555254684a085ed065b8"
+            ],
+            "success": true
+          },
+          "ref_price": 0.82,
+          "best_ask": 0.83,
+          "best_ask_size": 2022.43,
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "response_status": "matched",
+          "order_id": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+          "live": true,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T05:28:49.903912+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773119700",
+        "result": "take_profit",
+        "trade_id": "8e07e8bb0f0c41dea33d97c336aa84e3",
+        "details": {
+          "settled_at": "2026-03-10T05:28:49.887964+00:00",
+          "settlement_source": "live_take_profit",
+          "payout_usdc": 5.933917,
+          "gross_pnl_usdc": 0.959017,
+          "net_pnl_usdc": 0.933917,
+          "status": "take_profit",
+          "details": {
+            "response": {
+              "errorMsg": "",
+              "orderID": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+              "takingAmount": "6.024095",
+              "makingAmount": "4.999998",
+              "status": "matched",
+              "transactionsHashes": [
+                "0xb7a7f8b42cfae7d9d5130a98cdfc27ffc0310a86dd06555254684a085ed065b8"
+              ],
+              "success": true
+            },
+            "ref_price": 0.82,
+            "best_ask": 0.83,
+            "best_ask_size": 2022.43,
+            "tick_size": "0.01",
+            "neg_risk": false,
+            "response_status": "matched",
+            "order_id": "0x4597c1834df3d843ef61a0b684b4a760fb748f04a03728f5e15b742001564498",
+            "live": true,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9109950248756219,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "best_bid_size": 4969.05,
+              "response": {
+                "errorMsg": "",
+                "orderID": "0x63dde20db034c4ac5c3c71ca5544996afe84cd40d0c04a12e290e42d04c58058",
+                "takingAmount": "5.9301",
+                "makingAmount": "5.99",
+                "status": "matched",
+                "transactionsHashes": [
+                  "0xf799c14090e29bac48651517af91a9542dac6b548fd30a3bb2ba0d65344ac399"
+                ],
+                "success": true
+              },
+              "mode": "live"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T05:57:26.342307+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773121500",
+        "result": "submitted",
+        "trade_id": "79637a28d9634188ba8d509917b46577",
+        "details": {
+          "response": {
+            "errorMsg": "",
+            "orderID": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+            "takingAmount": "6.329109",
+            "makingAmount": "4.999996",
+            "status": "matched",
+            "transactionsHashes": [
+              "0xfef892bdf60e7ab5c99c693195d13dcc6bd20e15586eec0b3b59a3461756d451"
+            ],
+            "success": true
+          },
+          "ref_price": 0.79,
+          "best_ask": 0.8,
+          "best_ask_size": 531.52,
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "response_status": "matched",
+          "order_id": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+          "live": true,
+          "stop_loss_price": 0.6,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T05:58:21.456241+00:00",
+      "note": "profit_protect_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773121500",
+        "result": "take_profit",
+        "trade_id": "79637a28d9634188ba8d509917b46577",
+        "details": {
+          "settled_at": "2026-03-10T05:58:21.436826+00:00",
+          "settlement_source": "live_take_profit",
+          "payout_usdc": 5.2164,
+          "gross_pnl_usdc": 0.2484,
+          "net_pnl_usdc": 0.2164,
+          "status": "take_profit",
+          "details": {
+            "response": {
+              "errorMsg": "",
+              "orderID": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+              "takingAmount": "6.329109",
+              "makingAmount": "4.999996",
+              "status": "matched",
+              "transactionsHashes": [
+                "0xfef892bdf60e7ab5c99c693195d13dcc6bd20e15586eec0b3b59a3461756d451"
+              ],
+              "success": true
+            },
+            "ref_price": 0.79,
+            "best_ask": 0.8,
+            "best_ask_size": 531.52,
+            "tick_size": "0.01",
+            "neg_risk": false,
+            "response_status": "matched",
+            "order_id": "0xdcb94a61c03994d40b53f9de4dd4b8961bccfe3af4e732fe0cec6d79badc4f8f",
+            "live": true,
+            "stop_loss_price": 0.6,
+            "take_profit_price": 0.99,
+            "profit_protect_armed": true,
+            "profit_protect_armed_at": 0.9,
+            "take_profit": {
+              "trigger_price": 0.8409950248756219,
+              "exit_price": 0.84,
+              "best_bid_size": 178.3,
+              "response": {
+                "errorMsg": "",
+                "orderID": "0x813df40f5fec200d33aa20627a4a940ecf949cf0124433597e12ba17ae9a5218",
+                "takingAmount": "5.222399",
+                "makingAmount": "6.209998",
+                "status": "matched",
+                "transactionsHashes": [
+                  "0x7b293495b560189a63dd8785b7b5114a0fbbb0b4a6a4dace42bbb3d606122ef0"
+                ],
+                "success": true
+              },
+              "mode": "live"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T06:11:13.098300+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773122400",
+        "result": "submitted",
+        "trade_id": "3a452cef6dfd487081d7d125ba1dca95",
+        "details": {
+          "response": {
+            "errorMsg": "",
+            "orderID": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+            "takingAmount": "5.500509",
+            "makingAmount": "4.99999",
+            "status": "matched",
+            "transactionsHashes": [
+              "0x2e6d06ca031c0cf1e47fb3d3077ac8ba868ed6db7a87f69dcaef80d703e45907"
+            ],
+            "success": true
+          },
+          "ref_price": 0.9,
+          "best_ask": 0.91,
+          "best_ask_size": 72.09,
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "response_status": "matched",
+          "order_id": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+          "live": true,
+          "stop_loss_price": 0.75,
+          "take_profit_price": 0.99
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T06:13:25.923446+00:00",
+      "note": "take_profit_exit",
+      "extra": {
+        "slug": "btc-updown-15m-1773122400",
+        "result": "take_profit",
+        "trade_id": "3a452cef6dfd487081d7d125ba1dca95",
+        "details": {
+          "settled_at": "2026-03-10T06:13:25.897846+00:00",
+          "settlement_source": "live_take_profit",
+          "payout_usdc": 5.430204,
+          "gross_pnl_usdc": 0.438804,
+          "net_pnl_usdc": 0.430204,
+          "status": "take_profit",
+          "details": {
+            "response": {
+              "errorMsg": "",
+              "orderID": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+              "takingAmount": "5.500509",
+              "makingAmount": "4.99999",
+              "status": "matched",
+              "transactionsHashes": [
+                "0x2e6d06ca031c0cf1e47fb3d3077ac8ba868ed6db7a87f69dcaef80d703e45907"
+              ],
+              "success": true
+            },
+            "ref_price": 0.9,
+            "best_ask": 0.91,
+            "best_ask_size": 72.09,
+            "tick_size": "0.01",
+            "neg_risk": false,
+            "response_status": "matched",
+            "order_id": "0xf320c17fcd3ac9c3f554277cf56d8c691d78c90162f7ad67525ca329af46db3a",
+            "live": true,
+            "stop_loss_price": 0.75,
+            "take_profit_price": 0.99,
+            "take_profit": {
+              "trigger_price": 0.99,
+              "exit_price": 0.99,
+              "best_bid_size": 20.0,
+              "response": {
+                "errorMsg": "",
+                "orderID": "0x81e3ef43edf08235bf8fdf778829f52449a6a951c8ffc70b22e80c9a7b3dc10d",
+                "takingAmount": "5.4252",
+                "makingAmount": "5.48",
+                "status": "matched",
+                "transactionsHashes": [
+                  "0xc8d0f9f38138310947b5b4d6ba570ed5c5c23047fa32087f99f2b018e447ca26"
+                ],
+                "success": true
+              },
+              "mode": "live"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T06:26:16.564865+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773123300",
+        "result": "insufficient_best_ask_liquidity",
+        "trade_id": null,
+        "details": {
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "best_ask": 0.84,
+          "best_ask_size": 18.5,
+          "book_summary": {
+            "market": "0xe1418530b7d6d885e614845821dbc13f753de4915d3ef473f59b33f82c6dd281",
+            "asset_id": "33312991840457348413605280898544869307303007812145183985117233266039607871160",
+            "tick_size": "0.01",
+            "min_order_size": "5"
+          },
+          "ref_price": 0.79
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-10T06:41:38.049504+00:00",
+      "note": "trade_attempt",
+      "extra": {
+        "slug": "btc-updown-15m-1773124200",
+        "result": "insufficient_best_ask_liquidity",
+        "trade_id": null,
+        "details": {
+          "tick_size": "0.01",
+          "neg_risk": false,
+          "best_ask": 0.9,
+          "best_ask_size": 9.0,
+          "book_summary": {
+            "market": "0x2626b159e26a8e0526b8a6c33d283b6f93b9d4d542a8e9023f9fa28c4c24335d",
+            "asset_id": "41255680577896945460241886048069636827932104560188337723815115231393433157257",
+            "tick_size": "0.01",
+            "min_order_size": "5"
+          },
+          "ref_price": 0.9009950248756219
+        }
+      }
+    }
+  ]
+}
