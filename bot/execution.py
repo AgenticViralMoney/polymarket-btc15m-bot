@@ -326,6 +326,7 @@ class LiveExecutor(BaseExecutor):
         try:
             resp = self.client.post_order(signed, OrderType.FOK)
         except PolyApiException as e:
+            print(f"  [TP-ERROR] post_order failed: {e} | floor={sell_floor_price} bid={best_bid} bid_size={pre['best_bid_size']} shares={shares_to_sell}")
             details = dict(trade.get('details') or {})
             details['take_profit_error'] = {
                 'trigger_price': float(market_price),
