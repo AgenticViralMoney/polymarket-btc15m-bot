@@ -16,7 +16,7 @@ class GammaMarketDiscovery:
     def __init__(self, gamma_url: str, clob_host: str = 'https://clob.polymarket.com', chain_id: int | None = None):
         self.gamma_url = gamma_url.rstrip('/')
         self.clob_host = clob_host.rstrip('/')
-        self.market_feed = PolymarketMarketFeed()
+        self.market_feed = PolymarketMarketFeed(stale_after_seconds=15.0)
         self.price_client = ClobClient(self.clob_host, chain_id)
         self._subscribed_slug: str | None = None
 
@@ -39,6 +39,9 @@ class GammaMarketDiscovery:
                 self._subscribed_slug = slug
             self.market_feed.wait_until_ready(timeout_seconds=wait_ready_timeout_seconds)
             market = self.market_feed.apply_prices_to_market(market)
+            # Skip slow CLOB HTTP call when websocket already has fresh prices
+            if market.get('_live_price_source') == 'polymarket_ws':
+                return market
         market = self._apply_clob_buy_prices(market)
         return market
 
@@ -48,6 +51,9 @@ class GammaMarketDiscovery:
         slug = market.get('slug')
         if token_ids and slug == self._subscribed_slug:
             market = self.market_feed.apply_prices_to_market(market)
+            # Skip slow CLOB HTTP call when websocket has fresh prices
+            if market.get('_live_price_source') == 'polymarket_ws':
+                return market
             return self._apply_clob_buy_prices(market)
         return self.prepare_market(market)
 

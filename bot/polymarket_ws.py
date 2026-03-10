@@ -28,7 +28,7 @@ class PolymarketMarketFeed:
     def __init__(
         self,
         ws_url: str = 'wss://ws-subscriptions-clob.polymarket.com/ws/market',
-        stale_after_seconds: float = 5.0,
+        stale_after_seconds: float = 15.0,
         sync_tolerance_seconds: float = 1.5,
     ):
         self.ws_url = ws_url
@@ -149,7 +149,8 @@ class PolymarketMarketFeed:
         market['_ws_status'] = status
 
         parsed = []
-        used_live = False
+        live_count = 0
+        now = time.time()
         token_ids = market.get('_parsed_token_ids') or []
         for outcome in market.get('_parsed_outcomes') or []:
             updated = dict(outcome)
@@ -162,18 +163,19 @@ class PolymarketMarketFeed:
                     updated['best_bid'] = q.best_bid
                     updated['best_ask'] = q.best_ask
                     updated['last_trade_price'] = q.last_trade_price
-                    updated['quote_age_seconds'] = (time.time() - q.last_update_ts) if q.last_update_ts else None
+                    updated['quote_age_seconds'] = (now - q.last_update_ts) if q.last_update_ts else None
                     if (
                         q.buy_price is not None
                         and q.last_update_ts is not None
-                        and (time.time() - q.last_update_ts) <= self.stale_after_seconds
+                        and (now - q.last_update_ts) <= self.stale_after_seconds
                     ):
                         updated['price'] = q.buy_price
-                        used_live = True
+                        live_count += 1
             parsed.append(updated)
 
         market['_parsed_outcomes'] = parsed
-        market['_live_price_source'] = 'polymarket_ws' if used_live else 'gamma_outcome_prices'
+        # Consider WS live if at least one outcome has a fresh price
+        market['_live_price_source'] = 'polymarket_ws' if live_count > 0 else 'gamma_outcome_prices'
         return market
 
     def _run_forever(self) -> None:

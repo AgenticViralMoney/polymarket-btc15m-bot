@@ -165,6 +165,9 @@ def main() -> None:
                         )
                         if stop_result.ok:
                             break
+                        else:
+                            console.print(f"[yellow][{slug}] Early stop loss failed ({stop_result.status}), retrying in 1s[/yellow]")
+                            time.sleep(1)
 
                 secs_left = decision.seconds_to_resolution
                 secs_text = 'n/a' if secs_left is None else f"{secs_left:.1f}"
@@ -225,6 +228,9 @@ def main() -> None:
                         )
                         if result.ok:
                             break
+                        else:
+                            console.print(f"[yellow][{slug}] Take profit failed ({result.status}), retrying in 1s[/yellow]")
+                            time.sleep(1)
                     elif selected_price is not None and profit_protect_armed and selected_price <= settings.profit_protect_exit_price:
                         result = executor.take_profit_exit(open_trade, selected_price)
                         console.print(f"Profit protect exit for {slug}: {result.status}")
@@ -234,6 +240,9 @@ def main() -> None:
                         )
                         if result.ok:
                             break
+                        else:
+                            console.print(f"[yellow][{slug}] Profit protect exit failed ({result.status}), retrying in 1s[/yellow]")
+                            time.sleep(1)
                     elif selected_price is not None and selected_price <= float((open_trade.get('details') or {}).get('stop_loss_price', settings.stop_loss_price)):
                         result = executor.stop_loss_exit(open_trade, selected_price)
                         console.print(f"Stop loss result for {slug}: {result.status}")
@@ -243,8 +252,11 @@ def main() -> None:
                         )
                         if result.ok:
                             break
+                        else:
+                            console.print(f"[yellow][{slug}] Stop loss failed ({result.status}), retrying in 1s[/yellow]")
+                            time.sleep(1)
 
-                if decision.should_trade and (secs_left is None or secs_left > 10) and (not settings.only_one_trade_per_market or slug not in seen_markets):
+                if decision.should_trade and (not settings.only_one_trade_per_market or slug not in seen_markets):
                     result = executor.execute(
                         market,
                         token_id=decision.chosen_token_id,
@@ -257,7 +269,12 @@ def main() -> None:
                         'trade_attempt',
                         {'slug': slug, 'result': result.status, 'trade_id': result.trade_id, 'details': result.details},
                     )
-                    seen_markets.add(slug)
+                    if result.ok:
+                        seen_markets.add(slug)
+                    else:
+                        # Entry failed (API error, liquidity, etc.) — wait briefly then retry
+                        console.print(f"[yellow][{slug}] Entry failed ({result.status}), will retry in 2s[/yellow]")
+                        time.sleep(2)
                 if secs_left is None or secs_left <= 0 or market.get('closed') or not market.get('acceptingOrders'):
                     break
 
@@ -265,7 +282,8 @@ def main() -> None:
                 new_update_id = discovery.market_feed.wait_for_update(last_update_id, timeout_seconds=wait_timeout)
 
                 if new_update_id == last_update_id:
-                    market = discovery.get_market_by_slug(slug)
+                    # No websocket update — use fast WS refresh if available, slow CLOB fetch as fallback
+                    market = discovery.refresh_active_market(market)
                 else:
                     last_update_id = new_update_id
                     market = discovery.refresh_active_market(market)

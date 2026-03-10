@@ -286,6 +286,14 @@ class LiveExecutor(BaseExecutor):
             'take_profit_price': self.take_profit_price,
         }
         record = self._base_trade_record(market, token_id, outcome, outcome_index, best_ask, str(resp.get('status', 'submitted')) if isinstance(resp, dict) else 'submitted', details)
+        # Use actual takingAmount for shares_gross, keep fee-adjusted shares_net
+        if isinstance(resp, dict) and resp.get('takingAmount'):
+            try:
+                actual_gross = float(resp['takingAmount'])
+                record.shares_gross = actual_gross
+                record.shares_net = actual_gross - record.entry_fee_shares_est
+            except (ValueError, TypeError):
+                pass
         trade_id = self.journal.add_trade(record)
         return ExecutionResult(True, 'submitted', details, trade_id=trade_id)
 
@@ -295,14 +303,17 @@ class LiveExecutor(BaseExecutor):
         shares_to_sell = float(trade['shares_net'])
         if best_bid is None:
             return ExecutionResult(False, 'no_bid_liquidity', pre)
-        if pre['best_bid_size'] < shares_to_sell:
-            return ExecutionResult(False, 'insufficient_best_bid_liquidity', pre)
+
+        # Use aggressive floor price (like stop-loss) so the FOK order fills
+        # even when bid liquidity is thin at 0.98/0.99.  We still receive
+        # the best available bid; the price param is just the worst we accept.
+        sell_floor_price = max(float(trade.get('entry_price', 0)), 0.01)
 
         mo = MarketOrderArgs(
             token_id=trade['token_id'],
             amount=shares_to_sell,
             side=SELL,
-            price=float(best_bid),
+            price=sell_floor_price,
             order_type=OrderType.FOK,
         )
         signed = self.client.create_market_order(
@@ -319,10 +330,12 @@ class LiveExecutor(BaseExecutor):
             details['take_profit_error'] = {
                 'trigger_price': float(market_price),
                 'exit_price': float(best_bid),
+                'sell_floor_price': sell_floor_price,
                 'best_bid_size': pre['best_bid_size'],
                 'error': str(e),
                 'mode': 'live',
             }
+            self.journal.update_trade(trade['trade_id'], {'details': details})
             return ExecutionResult(False, 'take_profit_submit_failed', details, trade_id=trade['trade_id'])
 
         payout = shares_to_sell * float(best_bid)
@@ -332,6 +345,7 @@ class LiveExecutor(BaseExecutor):
         details['take_profit'] = {
             'trigger_price': float(market_price),
             'exit_price': float(best_bid),
+            'sell_floor_price': sell_floor_price,
             'best_bid_size': pre['best_bid_size'],
             'response': resp,
             'mode': 'live',
