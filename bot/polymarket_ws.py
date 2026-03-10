@@ -30,22 +30,26 @@ class PolymarketMarketFeed:
     def __init__(
         self,
         ws_url: str = 'wss://ws-subscriptions-clob.polymarket.com/ws/market',
-        stale_after_seconds: float = 15.0,
+        stale_after_seconds: float = 5.0,
         sync_tolerance_seconds: float = 1.5,
+        reconnect_after_silent_seconds: float = 2.0,
     ):
         self.ws_url = ws_url
         self.stale_after_seconds = stale_after_seconds
         self.sync_tolerance_seconds = sync_tolerance_seconds
+        self.reconnect_after_silent_seconds = reconnect_after_silent_seconds
         self._lock = threading.Lock()
         self._quotes: dict[str, OutcomeQuote] = {}
         self._asset_ids: list[str] = []
         self._ws: websocket.WebSocketApp | None = None
         self._thread: threading.Thread | None = None
+        self._watchdog_thread: threading.Thread | None = None
         self._stop_event = threading.Event()
         self._update_event = threading.Event()
         self._update_counter = 0
         self._last_error: str | None = None
         self._connected = False
+        self._last_message_ts: float = 0.0
 
     def subscribe(self, asset_ids: list[str]) -> None:
         asset_ids = [str(x) for x in asset_ids if x]
@@ -59,9 +63,12 @@ class PolymarketMarketFeed:
             self._update_counter = 0
         self._update_event.clear()
         self._asset_ids = asset_ids
+        self._last_message_ts = time.time()
         self._stop_event.clear()
         self._thread = threading.Thread(target=self._run_forever, name='polymarket-market-feed', daemon=True)
         self._thread.start()
+        self._watchdog_thread = threading.Thread(target=self._watchdog, name='polymarket-ws-watchdog', daemon=True)
+        self._watchdog_thread.start()
 
     def stop(self) -> None:
         self._stop_event.set()
@@ -180,9 +187,28 @@ class PolymarketMarketFeed:
         market['_live_price_source'] = 'polymarket_ws' if live_count > 0 else 'gamma_outcome_prices'
         return market
 
+    def _watchdog(self) -> None:
+        """Force-close the websocket if no message arrives within the threshold."""
+        while not self._stop_event.is_set():
+            self._stop_event.wait(timeout=1.0)
+            if self._stop_event.is_set():
+                break
+            ws = self._ws
+            if ws is None or not self._connected:
+                continue
+            silence = time.time() - self._last_message_ts
+            if silence > self.reconnect_after_silent_seconds:
+                print(f"  [WS-WATCHDOG] No data for {silence:.1f}s — forcing reconnect")
+                self._last_error = f'watchdog: silent for {silence:.1f}s'
+                try:
+                    ws.close()
+                except Exception:
+                    pass
+
     def _run_forever(self) -> None:
         while not self._stop_event.is_set():
             self._connected = False
+            self._last_message_ts = time.time()
             self._ws = websocket.WebSocketApp(
                 self.ws_url,
                 on_open=self._on_open,
@@ -200,7 +226,7 @@ class PolymarketMarketFeed:
                 self._connected = False
             if self._stop_event.is_set():
                 break
-            time.sleep(2)
+            time.sleep(1)
 
     def _on_open(self, ws: websocket.WebSocketApp) -> None:
         self._connected = True
@@ -222,6 +248,7 @@ class PolymarketMarketFeed:
 
     def _on_message(self, ws: websocket.WebSocketApp, message: str) -> None:
         receipt_ts = time.time()
+        self._last_message_ts = receipt_ts
         try:
             payload = json.loads(message)
         except Exception:
