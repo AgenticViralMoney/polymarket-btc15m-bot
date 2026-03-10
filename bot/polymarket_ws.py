@@ -50,7 +50,7 @@ class PolymarketMarketFeed:
         self._last_error: str | None = None
         self._connected = False
         self._last_message_ts: float = 0.0
-        self._got_first_msg = False
+        self._msg_count_since_connect: int = 0
 
     def subscribe(self, asset_ids: list[str]) -> None:
         asset_ids = [str(x) for x in asset_ids if x]
@@ -64,7 +64,6 @@ class PolymarketMarketFeed:
             self._update_counter = 0
         self._update_event.clear()
         self._asset_ids = asset_ids
-        self._last_message_ts = time.time()
         self._stop_event.clear()
         self._thread = threading.Thread(target=self._run_forever, name='polymarket-market-feed', daemon=True)
         self._thread.start()
@@ -191,22 +190,25 @@ class PolymarketMarketFeed:
     def _watchdog(self) -> None:
         """Force-close the websocket if no message arrives within the threshold.
 
-        Only triggers after we've received at least one real message on this
-        connection (_got_first_msg).  This avoids false reconnects during the
-        sleep phase between markets when no data is expected.
+        Only triggers after we've received a healthy stream of messages (>=5)
+        on this connection, then gone silent.  This avoids false reconnects
+        during quiet periods (e.g. sleep between markets) when no data is
+        expected.
         """
         while not self._stop_event.is_set():
             self._stop_event.wait(timeout=1.0)
             if self._stop_event.is_set():
                 break
             ws = self._ws
-            if ws is None or not self._connected or not self._got_first_msg:
+            if ws is None or not self._connected:
+                continue
+            # Only act if we had a healthy stream that then went silent
+            if self._msg_count_since_connect < 5:
                 continue
             silence = time.time() - self._last_message_ts
             if silence > self.reconnect_after_silent_seconds:
                 print(f"  [WS-WATCHDOG] No data for {silence:.1f}s — forcing reconnect")
                 self._last_error = f'watchdog: silent for {silence:.1f}s'
-                self._got_first_msg = False
                 try:
                     ws.close()
                 except Exception:
@@ -215,6 +217,7 @@ class PolymarketMarketFeed:
     def _run_forever(self) -> None:
         while not self._stop_event.is_set():
             self._connected = False
+            self._msg_count_since_connect = 0
             self._last_message_ts = time.time()
             self._ws = websocket.WebSocketApp(
                 self.ws_url,
@@ -256,7 +259,7 @@ class PolymarketMarketFeed:
     def _on_message(self, ws: websocket.WebSocketApp, message: str) -> None:
         receipt_ts = time.time()
         self._last_message_ts = receipt_ts
-        self._got_first_msg = True
+        self._msg_count_since_connect += 1
         try:
             payload = json.loads(message)
         except Exception:
