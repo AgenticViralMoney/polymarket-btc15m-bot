@@ -188,12 +188,12 @@ class PolymarketMarketFeed:
         return market
 
     def _watchdog(self) -> None:
-        """Force-close the websocket if no message arrives within the threshold.
+        """Force-close the websocket when quotes desync beyond threshold.
 
-        Only triggers after we've received a healthy stream of messages (>=5)
-        on this connection, then gone silent.  This avoids false reconnects
-        during quiet periods (e.g. sleep between markets) when no data is
-        expected.
+        Checks the sync_gap between outcome timestamps.  If one side
+        receives updates while the other goes stale for > reconnect_after_silent_seconds,
+        force a reconnect.  Only triggers after we've received a healthy
+        stream of messages (>=15) to avoid false reconnects during sleep.
         """
         while not self._stop_event.is_set():
             self._stop_event.wait(timeout=1.0)
@@ -202,13 +202,18 @@ class PolymarketMarketFeed:
             ws = self._ws
             if ws is None or not self._connected:
                 continue
-            # Only act if we had a healthy stream that then went silent
+            # Only act if we had a healthy stream
             if self._msg_count_since_connect < 15:
                 continue
-            silence = time.time() - self._last_message_ts
-            if silence > self.reconnect_after_silent_seconds:
-                print(f"  [WS-WATCHDOG] No data for {silence:.1f}s — forcing reconnect")
-                self._last_error = f'watchdog: silent for {silence:.1f}s'
+            # Check sync gap between outcomes
+            with self._lock:
+                timestamps = [q.last_update_ts for q in self._quotes.values() if q.last_update_ts is not None]
+            if len(timestamps) < 2:
+                continue
+            sync_gap = max(timestamps) - min(timestamps)
+            if sync_gap > self.reconnect_after_silent_seconds:
+                print(f"  [WS-WATCHDOG] Sync gap {sync_gap:.1f}s — forcing reconnect")
+                self._last_error = f'watchdog: sync_gap {sync_gap:.1f}s'
                 try:
                     ws.close()
                 except Exception:
