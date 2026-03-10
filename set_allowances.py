@@ -109,6 +109,10 @@ def main():
         try:
             provider = Web3.HTTPProvider(rpc_url, request_kwargs={"timeout": 10})
             candidate = Web3(provider)
+            # Polygon is a POA chain — inject middleware to handle extraData
+            candidate.middleware_onion.inject(
+                Web3.middleware.ExtraDataToPOAMiddleware, layer=0
+            )
             if candidate.is_connected():
                 print(f"Connected to: {rpc_url}")
                 w3 = candidate
