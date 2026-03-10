@@ -6,7 +6,13 @@ from typing import Any
 
 from py_clob_client.client import ClobClient
 from py_clob_client.exceptions import PolyApiException
-from py_clob_client.clob_types import MarketOrderArgs, OrderType, PartialCreateOrderOptions
+from py_clob_client.clob_types import (
+    AssetType,
+    BalanceAllowanceParams,
+    MarketOrderArgs,
+    OrderType,
+    PartialCreateOrderOptions,
+)
 from py_clob_client.order_builder.constants import BUY, SELL
 
 from bot.fees import estimate_crypto_taker_fee_usdc, estimate_fee_shares_on_buy
@@ -232,6 +238,27 @@ class LiveExecutor(BaseExecutor):
             },
         }
 
+    def _get_real_balance(self, token_id: str) -> float | None:
+        """Query the CLOB API for the actual on-chain CTF token balance.
+
+        Returns balance in human-readable units (already divided by 1e6),
+        or None if the query fails.
+        """
+        try:
+            resp = self.client.get_balance_allowance(
+                BalanceAllowanceParams(
+                    asset_type=AssetType.CONDITIONAL,
+                    token_id=token_id,
+                )
+            )
+            raw = resp.get('balance') if isinstance(resp, dict) else None
+            if raw is not None and raw != '':
+                # Balance is returned in 1e6 fixed-point (token decimals)
+                return int(raw) / 1e6
+        except Exception as e:
+            print(f"  [BALANCE-WARN] Could not fetch on-chain balance: {e}")
+        return None
+
     def execute(self, market: dict[str, Any], token_id: str, outcome: str, outcome_index: int, ref_price: float) -> ExecutionResult:
         pre = self.preflight(token_id, ref_price)
         best_ask = pre['best_ask']
@@ -286,10 +313,13 @@ class LiveExecutor(BaseExecutor):
             'take_profit_price': self.take_profit_price,
         }
         record = self._base_trade_record(market, token_id, outcome, outcome_index, best_ask, str(resp.get('status', 'submitted')) if isinstance(resp, dict) else 'submitted', details)
-        # Use actual takingAmount for shares_gross, keep fee-adjusted shares_net
+        # Use actual takingAmount for shares_gross, keep fee-adjusted shares_net.
+        # takingAmount is in 1e6 fixed-point (token decimals), so divide by 1e6.
         if isinstance(resp, dict) and resp.get('takingAmount'):
             try:
-                actual_gross = float(resp['takingAmount'])
+                raw_taking = float(resp['takingAmount'])
+                # Values > 1000 are clearly in 1e6 token decimals
+                actual_gross = raw_taking / 1e6 if raw_taking > 1000 else raw_taking
                 record.shares_gross = actual_gross
                 record.shares_net = actual_gross - record.entry_fee_shares_est
             except (ValueError, TypeError):
@@ -300,7 +330,15 @@ class LiveExecutor(BaseExecutor):
     def take_profit_exit(self, trade: dict[str, Any], market_price: float) -> ExecutionResult:
         pre = self.stop_loss_preflight(trade['token_id'])
         best_bid = pre['best_bid']
-        shares_to_sell = float(trade['shares_net'])
+        shares_est = float(trade['shares_net'])
+        # Use actual on-chain balance to avoid "not enough balance" errors.
+        # The estimate can overshoot because SDK rounding and on-chain fees
+        # differ slightly from our local fee estimate.
+        real_balance = self._get_real_balance(trade['token_id'])
+        if real_balance is not None and real_balance > 0:
+            shares_to_sell = min(shares_est, real_balance)
+        else:
+            shares_to_sell = shares_est
         if best_bid is None:
             return ExecutionResult(False, 'no_bid_liquidity', pre)
 
@@ -366,7 +404,13 @@ class LiveExecutor(BaseExecutor):
     def stop_loss_exit(self, trade: dict[str, Any], market_price: float) -> ExecutionResult:
         pre = self.stop_loss_preflight(trade['token_id'])
         best_bid = pre['best_bid']
-        shares_to_sell = float(trade['shares_net'])
+        shares_est = float(trade['shares_net'])
+        # Use actual on-chain balance to avoid "not enough balance" errors.
+        real_balance = self._get_real_balance(trade['token_id'])
+        if real_balance is not None and real_balance > 0:
+            shares_to_sell = min(shares_est, real_balance)
+        else:
+            shares_to_sell = shares_est
         if best_bid is None:
             return ExecutionResult(False, 'no_bid_liquidity', pre)
 
