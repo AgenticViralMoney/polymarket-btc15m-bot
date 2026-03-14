@@ -1,55 +1,82 @@
-# Polymarket 5m BTC bot
+# BTC 15min Bot
 
-A clean Python bot for Polymarket BTC 5-minute UP/DOWN markets.
+Automated trading bot for Polymarket BTC 15-minute UP/DOWN markets.
 
 ## Strategy
-- Ignore the first ~4 minutes of each BTC 5-minute market.
-- Monitor only the final 59 seconds.
-- If UP or DOWN reaches $0.80 or higher during that last-minute window, buy that side.
-- At most one trade per market.
 
-## What it now logs
-- Every last-minute sample to `reports/touches.json`
-- Rolling summary to `reports/latest_report.json`
-- Trade journal to `journal.json`
+- Monitors each BTC 15-minute market during the final window before resolution
+- If UP or DOWN reaches the entry threshold (configurable, default 0.80), buys that side
+- At most one trade per market
+- Reversal blacklist: if one side spikes above 0.95 early in monitoring, that side is blacklisted for the market
 
-## What the report contains
-- Total trades, settled trades, wins, losses, win rate, gross PnL, net PnL
-- Last-minute touch stats: total samples, threshold-crossing samples, threshold-crossing markets, max price seen
+## Entry & Exit Rules
 
-## Important
-This is still an execution framework, not proof of edge. Crypto-market taker fees now apply on Polymarket crypto markets, including these short-duration BTC markets, and fee drag matters around the 0.80 entry level ([Polymarket fees](https://docs.polymarket.com/trading/fees)). Market orders are submitted using the official client pattern with FOK semantics and market-specific parameters ([Create Order docs](https://docs.polymarket.com/trading/orders/create), [py-clob-client README](https://github.com/Polymarket/py-clob-client)).
+| Rule | Default | Env Var |
+|---|---|---|
+| Entry threshold | 0.80 | `MIN_CONFIDENCE_PRICE` |
+| Max entry price | 0.91 | `MAX_WORST_PRICE` |
+| Stop loss | 0.50 | `STOP_LOSS_PRICE` |
+| Take profit | 0.99 | `TAKE_PROFIT_PRICE` |
+| Profit protect arm | 0.90 | `PROFIT_PROTECT_ARM_PRICE` |
+| Profit protect exit | 0.87 | `PROFIT_PROTECT_EXIT_PRICE` |
+| Trade size | $20 | `TRADE_SIZE_USD` |
+| Min liquidity | 12 | `MIN_LIQUIDITY_ON_BEST_LEVEL` |
+| Poll interval | 0.2s | `POLL_INTERVAL_SECONDS` |
+
+## Architecture
+
+### Websocket Price Feed
+
+Real-time prices via Polymarket's websocket (`bot/polymarket_ws.py`). Includes:
+
+- **Sync-gap watchdog**: monitors the timestamp difference between Up and Down outcomes. If one side goes stale while the other keeps updating (sync_gap > threshold), forces a WS reconnect
+- **Timestamp reset on reconnect**: clears all quote timestamps when reconnecting so the watchdog doesn't immediately re-trigger on stale values
+- **Message count guard**: requires 15+ messages on a connection before the watchdog activates, preventing false triggers during sleep between markets (higher than 5min bot due to longer sleep periods)
+
+### Execution
+
+- FOK (Fill or Kill) market orders via the Polymarket CLOB
+- **Real on-chain balance check** before every sell (TP/SL) — queries `get_balance_allowance()` and uses `min(estimate, real_balance)` to avoid "not enough balance" errors
+- Automatic retry on failed exits
+
+### Profit Protection
+
+- Arms when position price reaches the arm threshold (default 0.90)
+- Exits if price drops back below the exit threshold (default 0.87)
+- Floor price on profit protect exit is set at entry price — won't sell below what you paid
+
+## Files
+
+- `main.py` — main loop, entry/exit logic, blacklist, profit protect
+- `bot/market_discovery.py` — BTC 15-minute market discovery via Gamma API
+- `bot/strategy.py` — entry threshold evaluation
+- `bot/execution.py` — paper/live execution, TP/SL/profit protect exits
+- `bot/polymarket_ws.py` — websocket price feed with sync-gap watchdog
+- `bot/touchlog.py` — last-minute touch logging
+- `bot/tracking.py` — settlement tracking and journal
+- `bot/fees.py` — fee estimation
+- `bot/state.py` — state management
+- `bot/live_btc_feed.py` — live BTC price reference
 
 ## Setup
+
 ```bash
-chmod +x setup.sh run_paper.sh run_live.sh install_service.sh
+chmod +x setup.sh run_paper.sh run_live.sh
 ./setup.sh
 cp .env.example .env
+# Edit .env with your private key and settings
 ```
 
-## Run paper mode
+## Run
+
 ```bash
+# Paper mode
 ./run_paper.sh
-```
 
-## Run live mode
-```bash
+# Live mode
 ./run_live.sh
 ```
 
-## Service mode
-```bash
-./install_service.sh
-```
-
-## Files
-- `main.py` — runtime loop
-- `bot/market_discovery.py` — direct BTC 5-minute market discovery
-- `bot/strategy.py` — last-minute threshold logic
-- `bot/execution.py` — paper/live execution
-- `bot/touchlog.py` — last-minute touch logging
-- `bot/tracking.py` — settlement and reporting
-- `DEPLOYMENT.md` — VPS instructions
-
 ## Credentials
-The official Python client authenticates using your private key, Polygon chain ID 137, a funder address, and derived API credentials via `create_or_derive_api_creds()` ([py-clob-client README](https://github.com/Polymarket/py-clob-client)).
+
+Requires a Polygon wallet private key. The bot derives Polymarket API credentials via `create_or_derive_api_creds()` from the [py-clob-client](https://github.com/Polymarket/py-clob-client).
